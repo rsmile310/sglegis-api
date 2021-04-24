@@ -1,0 +1,508 @@
+{
+    "tables": {
+        "areas": {
+            "tableName": "areas",
+            "schema": {
+                "area_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "area_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "area_name": {
+                    "allowNull": true,
+                    "field": "area_name",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "areas_aspects": {
+            "tableName": "areas_aspects",
+            "schema": {
+                "area_aspect_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "area_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "area_aspect_name": {
+                    "allowNull": true,
+                    "field": "area_aspect_name",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "cities": {
+            "tableName": "cities",
+            "schema": {
+                "city_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "city_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "state_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "states",
+                        "key": "state_id"
+                    },
+                    "field": "state_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "city_name": {
+                    "allowNull": true,
+                    "field": "city_name",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "uf": {
+                    "allowNull": true,
+                    "field": "uf",
+                    "seqType": "Sequelize.STRING(2)"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "customers": {
+            "tableName": "customers",
+            "schema": {
+                "customer_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "customer_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "customer_business_name": {
+                    "allowNull": true,
+                    "field": "customer_business_name",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "customer_trade_name": {
+                    "allowNull": true,
+                    "field": "customer_trade_name",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "customer_cnpj": {
+                    "allowNull": true,
+                    "field": "customer_cnpj",
+                    "seqType": "Sequelize.STRING(20)"
+                },
+                "customer_group_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "customers_groups",
+                        "key": "customer_group_id"
+                    },
+                    "field": "customer_group_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "customers_groups": {
+            "tableName": "customers_groups",
+            "schema": {
+                "customer_group_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "customer_group_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "customer_group_name": {
+                    "allowNull": true,
+                    "field": "customer_group_name",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "customers_unities": {
+            "tableName": "customers_unities",
+            "schema": {
+                "customer_unity_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "customer_unity_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "customer_unity_cnpj": {
+                    "allowNull": true,
+                    "field": "customer_unity_cnpj",
+                    "seqType": "Sequelize.STRING(20)"
+                },
+                "customer_unity_name": {
+                    "allowNull": true,
+                    "field": "customer_unity_name",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "customer_unity_address": {
+                    "allowNull": true,
+                    "field": "customer_unity_address",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "customer_unity_city_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "cities",
+                        "key": "city_id"
+                    },
+                    "field": "customer_unity_city_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "customer_unity_uf_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "states",
+                        "key": "state_id"
+                    },
+                    "field": "customer_unity_uf_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "customer_unity_cep": {
+                    "allowNull": true,
+                    "field": "customer_unity_cep",
+                    "seqType": "Sequelize.STRING(9)"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "groups": {
+            "tableName": "groups",
+            "schema": {
+                "group_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "group_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "group_name": {
+                    "allowNull": true,
+                    "field": "group_name",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "group_description": {
+                    "allowNull": true,
+                    "field": "group_description",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "group_status": {
+                    "allowNull": true,
+                    "field": "group_status",
+                    "seqType": "Sequelize.STRING(1)"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "groups_users": {
+            "tableName": "groups_users",
+            "schema": {
+                "groups_group_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "groups_group_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "uesrs_user_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "uesrs_user_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "menus": {
+            "tableName": "menus",
+            "schema": {
+                "menu_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "menu_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "menu_name": {
+                    "allowNull": true,
+                    "field": "menu_name",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "menu_link": {
+                    "allowNull": true,
+                    "field": "menu_link",
+                    "seqType": "Sequelize.STRING(400)"
+                },
+                "menu_icon": {
+                    "allowNull": true,
+                    "field": "menu_icon",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "menu_status": {
+                    "allowNull": true,
+                    "field": "menu_status",
+                    "seqType": "Sequelize.STRING(1)"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "menus_groups": {
+            "tableName": "menus_groups",
+            "schema": {
+                "menus_menu_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "menus_menu_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "groups_group_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "groups_group_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "states": {
+            "tableName": "states",
+            "schema": {
+                "state_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "state_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "state_name": {
+                    "allowNull": true,
+                    "field": "state_name",
+                    "seqType": "Sequelize.STRING(45)"
+                },
+                "uf": {
+                    "allowNull": true,
+                    "field": "uf",
+                    "seqType": "Sequelize.STRING(2)"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "uesrs": {
+            "tableName": "uesrs",
+            "schema": {
+                "user_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "user_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "user_name": {
+                    "allowNull": true,
+                    "field": "user_name",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "user_email": {
+                    "allowNull": true,
+                    "field": "user_email",
+                    "seqType": "Sequelize.STRING(400)"
+                },
+                "user_password": {
+                    "allowNull": true,
+                    "field": "user_password",
+                    "seqType": "Sequelize.STRING(40)"
+                },
+                "user_first_access": {
+                    "allowNull": true,
+                    "field": "user_first_access",
+                    "seqType": "Sequelize.STRING(1)"
+                },
+                "user_status": {
+                    "allowNull": true,
+                    "field": "user_status",
+                    "seqType": "Sequelize.STRING(1)"
+                },
+                "user_change_password": {
+                    "allowNull": true,
+                    "field": "user_change_password",
+                    "seqType": "Sequelize.STRING(1)"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "unities_contacts": {
+            "tableName": "unities_contacts",
+            "schema": {
+                "unity_contact_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "unity_contact_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "unity_contact_name": {
+                    "allowNull": true,
+                    "field": "unity_contact_name",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "unity_contact_email": {
+                    "allowNull": true,
+                    "field": "unity_contact_email",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "unity_contact_phone": {
+                    "allowNull": true,
+                    "field": "unity_contact_phone",
+                    "seqType": "Sequelize.STRING(25)"
+                },
+                "unity_contact_observation": {
+                    "allowNull": true,
+                    "field": "unity_contact_observation",
+                    "seqType": "Sequelize.STRING(200)"
+                },
+                "unity_contact_customer_unity_id": {
+                    "allowNull": true,
+                    "field": "unity_contact_customer_unity_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "path": "/Users/cleiton/Work/unity/unity/api/migrations/_current.json",
+    "backupPath": "/Users/cleiton/Work/unity/unity/api/migrations/_current_bak.json",
+    "exists": false,
+    "revision": 1
+}
