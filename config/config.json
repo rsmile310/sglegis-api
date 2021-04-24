@@ -15,10 +15,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "mysql",
+    "password": "41030a057ce7632a",
+    "database": "sglegis_db",
+    "host": "199.241.139.66",
+    "dialect": "mysql",
+    "port": 11396
   }
 }
