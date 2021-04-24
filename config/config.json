@@ -20,6 +20,6 @@
     "database": "sglegis_db",
     "host": "172.17.0.5",
     "dialect": "mysql",
-    "port": 11396
+    "port": 3306
   }
 }
