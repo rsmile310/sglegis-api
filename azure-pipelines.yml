@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- checkout: git@ssh.dev.azure.com:v3/200Systems/Novo%20SG-Legis/api
+- checkout: self
 - task: InstallSSHKey@0
   inputs:
     knownHostsEntry: $(SSH_KNOWN_HOSTS_ENTRY)
