@@ -18,6 +18,10 @@ steps:
     sshKeySecureFile: $(SSH_PRIVATE_KEY_FILENAME)
 - script: |
     git remote add dokku dokku@$DOKKU_SERVER:$DOKKU_PROJECT_NAME
+    
+    echo 'Remotes on git'
     git remote -v
+
+    echo 'Dokku push'
     git push dokku HEAD:main --force
   displayName: 'Deploy to Dokku'
