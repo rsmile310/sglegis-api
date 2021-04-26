@@ -10,10 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script:
-# Install the migration
-- script: "sequelize db:migrate"
-  displayName: "run migration"
 
 - task: InstallSSHKey@0
   inputs:
