@@ -1,7 +1,7 @@
 variables:
 - group: DOKKU_VARIABLES
 - name: DOKKU_PROJECT_NAME
-  value: dev.sglegis
+  value: dev-sglegis
 
 trigger:
 - develop
