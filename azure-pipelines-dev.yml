@@ -1,16 +1,16 @@
 variables:
 - group: DOKKU_VARIABLES
 - name: DOKKU_PROJECT_NAME
-  value: sglegis
+  value: dev-sglegis
 
 trigger:
-- main
+- develop
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: ubuntu-latest
 
 steps:
-- checkout: git@ssh.dev.azure.com:v3/200Systems/Novo%20SG-Legis/api
+
 - task: InstallSSHKey@0
   inputs:
     knownHostsEntry: $(SSH_KNOWN_HOSTS_ENTRY)
@@ -18,6 +18,10 @@ steps:
     sshKeySecureFile: $(SSH_PRIVATE_KEY_FILENAME)
 - script: |
     git remote add dokku dokku@$DOKKU_SERVER:$DOKKU_PROJECT_NAME
+    
+    echo 'Remotes on git'
     git remote -v
-    git push dokku HEAD:main --force
+
+    echo 'Dokku push'
+    git push dokku HEAD:master --force
   displayName: 'Deploy to Dokku'

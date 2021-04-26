@@ -3,23 +3,15 @@
     "username": "mysql",
     "password": "41030a057ce7632a",
     "database": "sglegis_db",
-    "host": "199.241.139.66",
+    "host": "172.17.0.5",
     "dialect": "mysql",
-    "port": 11396
+    "port": 3306
   },
   "development": {
     "username": "mysql",
     "password": "5f4c097fb181abfc",
     "database": "dev_sglegis_db",
     "host": "172.17.0.18",
-    "dialect": "mysql",
-    "port": 25239
-  },
-  "production": {
-    "username": "mysql",
-    "password": "41030a057ce7632a",
-    "database": "sglegis_db",
-    "host": "172.17.0.5",
     "dialect": "mysql",
     "port": 3306
   }
