@@ -10,6 +10,23 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+# Install sequelize
+- script: "npm install -g sequelize"
+  displayName: "install sequelize"
+
+# Install a driver, like mysql2 
+- script: "npm install -g mysql2"
+  displayName: "install mysql2"
+
+# Install the sequelize CLI
+- script: "npm install -g sequelize-cli"
+  displayName: "install sequelize-cli"
+
+# Install the migration
+- script: "sequelize db:migrate"
+  displayName: "run migration"
+
+steps:
 - task: InstallSSHKey@0
   inputs:
     knownHostsEntry: $(SSH_KNOWN_HOSTS_ENTRY)
