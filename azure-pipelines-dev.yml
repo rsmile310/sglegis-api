@@ -23,5 +23,5 @@ steps:
     git remote -v
 
     echo 'Dokku push'
-    git push dokku develop:master --force
+    git push dokku HEAD:master --force
   displayName: 'Deploy to Dokku'
