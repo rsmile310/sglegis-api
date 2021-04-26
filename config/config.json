@@ -1,5 +1,5 @@
 {
-  "development": {
+  "homolog": {
     "username": "mysql",
     "password": "41030a057ce7632a",
     "database": "sglegis_db",
@@ -7,7 +7,7 @@
     "dialect": "mysql",
     "port": 11396
   },
-  "test": {
+  "development": {
     "username": "mysql",
     "password": "5f4c097fb181abfc",
     "database": "dev_sglegis_db",
