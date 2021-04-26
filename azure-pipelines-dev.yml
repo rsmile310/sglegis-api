@@ -10,7 +10,8 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-# Install sequelize
+- script:
+  # Install sequelize
 - script: "npm install -g sequelize"
   displayName: "install sequelize"
 
@@ -26,7 +27,6 @@ steps:
 - script: "sequelize db:migrate"
   displayName: "run migration"
 
-steps:
 - task: InstallSSHKey@0
   inputs:
     knownHostsEntry: $(SSH_KNOWN_HOSTS_ENTRY)
