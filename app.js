@@ -7,7 +7,7 @@ const express = require('express');
 
 const app = express();
 
-databaseConfig(app);
+//databaseConfig(app);
 utilitiesConfig(app);
 routesConfig(app);
 errorConfig(app);
