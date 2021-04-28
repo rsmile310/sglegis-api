@@ -7,12 +7,20 @@
     "dialect": "mysql",
     "port": 3306
   },
-  "development": {
+  "test": {
     "username": "mysql",
     "password": "5f4c097fb181abfc",
     "database": "dev_sglegis_db",
     "host": "172.17.0.18",
     "dialect": "mysql",
     "port": 3306
+  },
+  "development": {
+    "username": "mysql",
+    "password": "5f4c097fb181abfc",
+    "database": "dev_sglegis_db",
+    "host": "199.241.139.66",
+    "dialect": "mysql",
+    "port": 25239
   }
 }
