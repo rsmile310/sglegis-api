@@ -12,10 +12,6 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(100),
       allowNull: true
     },
-    customer_trade_name: {
-      type: DataTypes.STRING(100),
-      allowNull: true
-    },
     customer_cnpj: {
       type: DataTypes.STRING(20),
       allowNull: true
