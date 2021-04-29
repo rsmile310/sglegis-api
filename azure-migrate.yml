@@ -1,0 +1,16 @@
+pool:
+  name: azure-pipeline-runner
+pr: none
+
+steps:
+  - task: CopyFiles@2
+    displayName: "Copy migration scripts"
+    inputs:
+      contents: "$(Build.SourcesDirectory)/migrations/**"
+      targetFolder: $(Build.ArtifactStagingDirectory)
+
+  - task: PublishBuildArtifacts@1
+    displayName: "Publish Artifact"
+    inputs:
+      pathToPublish: $(Build.ArtifactStagingDirectory)
+      artifactName: migrate
