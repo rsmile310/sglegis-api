@@ -14,5 +14,14 @@
     "host": "172.17.0.18",
     "dialect": "mysql",
     "port": 3306
+  },
+  "local": {
+    "username": "root",
+    "password": "100grilo",
+    "database": "dev_sglegis_db",
+    "host": "localhost",
+    "dialect": "mysql",
+    "port": 3306,
+    "protocol": "tcp"
   }
 }
