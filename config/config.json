@@ -11,7 +11,7 @@
     "username": "mysql",
     "password": "5f4c097fb181abfc",
     "database": "dev_sglegis_db",
-    "host": "172.17.0.18",
+    "host": "172.17.0.16",
     "dialect": "mysql",
     "port": 3306
   }
