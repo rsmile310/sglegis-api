@@ -9,6 +9,10 @@ exports.get = (req, res, next) => {
     base.get(document_items, req, res, next, 'document_item_id');
 };
 
+exports.getItems = (req, res, next) => {
+    base.get(document_items, req, res, next, 'document_id');
+};
+
 exports.post = (req, res, next) => {
     base.insert(document_items, req, res, next);
 }

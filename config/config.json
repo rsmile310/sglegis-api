@@ -1,4 +1,4 @@
-{
+{  
   "homolog": {
     "username": "mysql",
     "password": "41030a057ce7632a",
@@ -17,8 +17,8 @@
   },
   "local": {
     "username": "root",
-    "password": "100grilo",
-    "database": "dev_sglegis_db",
+    "password": "kill",
+    "database": "sgLegis",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "port": 3306,

@@ -12,5 +12,9 @@ router.use(`/${version}/unitycontact/`, require('./unityContactRoutes'));
 router.use(`/${version}/area/`, require('./areaRoutes'));
 router.use(`/${version}/areaaspect/`, require('./areaAspectRoutes'));
 router.use(`/${version}/cep/`, require('./cepRoutes'));
+router.use(`/${version}/documentscope/`, require('./documentScopeRoutes'));
+router.use(`/${version}/documentstatus/`, require('./documentStatusRoutes'));
+router.use(`/${version}/document/`, require('./documentRoutes'));
+router.use(`/${version}/documentitem/`, require('./documentItemRoutes'));
 
 module.exports = router;

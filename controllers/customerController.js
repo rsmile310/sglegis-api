@@ -5,10 +5,14 @@ const db = require('../models/index');
 exports.getAll = (req, res, next) => {
     //base.getAll(customers, req, res, next);  
     db.sequelize.query(`select c.*, cg.customer_group_name from customers c 
-         join customers_groups cg on (c.customer_group_id = cg.customer_group_id) 
+         join customers_groups cg on (c.customer_group_id = cg.customer_group_id)                
          order by c.customer_trade_name`).then(values => {
         res.send(values[0]);
     });
+}
+
+exports.getQuery = (req, res, next)=>{
+    base.query(customers, req, res, next);
 }
 
 exports.get = (req, res, next) => {

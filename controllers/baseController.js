@@ -3,7 +3,7 @@ const options = require('./queryoptions');
 
 
 exports.getAll = (model, req, res, next) => {
-    model.findAll(options.getOptions(req))        
+    model.findAll(options.getOptions(req))
         .then(values => {
             res.send(values);
         })
@@ -23,6 +23,18 @@ exports.get = (model, req, res, next, fieldId) => {
             next(err);
         });
 };
+
+exports.query = (model, req, res, next) => {
+    let q = options.query(req);
+    model.findAll(q)
+            .then(values => {
+                res.send(values);
+            })
+            .catch(err => {
+                next(err);
+            }        
+    );
+}
 
 exports.insert = (model, req, res, next) => {
     model.create(req.body, { isNewRecord: true })

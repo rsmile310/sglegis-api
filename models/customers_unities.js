@@ -40,6 +40,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(9),
       allowNull: true
     },
+    customer_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'customers',
+        key: 'customer_id'
+      }
+    },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: true

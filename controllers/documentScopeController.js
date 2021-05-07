@@ -1,5 +1,4 @@
 const { document_scopes } = require('../models');
-const document_scopes = require('../models/document_scopes');
 const base = require('./baseController');
 
 exports.getAll = (req, res, next) => {

@@ -56,6 +56,67 @@
             },
             "indexes": []
         },
+        "ceps": {
+            "tableName": "ceps",
+            "schema": {
+                "cep_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "cep_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "city_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "cities",
+                        "key": "city_id"
+                    },
+                    "field": "city_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "state_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "states",
+                        "key": "state_id"
+                    },
+                    "field": "state_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "type": {
+                    "allowNull": true,
+                    "field": "type",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "street_name": {
+                    "allowNull": true,
+                    "field": "street_name",
+                    "seqType": "Sequelize.STRING(200)"
+                },
+                "district_name": {
+                    "allowNull": true,
+                    "field": "district_name",
+                    "seqType": "Sequelize.STRING(100)"
+                },
+                "cep": {
+                    "allowNull": false,
+                    "field": "cep",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
         "cities": {
             "tableName": "cities",
             "schema": {
@@ -220,6 +281,15 @@
                     "field": "customer_unity_cep",
                     "seqType": "Sequelize.STRING(9)"
                 },
+                "customer_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "customers",
+                        "key": "customer_id"
+                    },
+                    "field": "customer_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "createdAt": {
                     "allowNull": true,
                     "field": "createdAt",
@@ -227,6 +297,61 @@
                 },
                 "updatedAt": {
                     "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "documents": {
+            "tableName": "documents",
+            "schema": {
+                "document_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "document_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_scope_id": {
+                    "allowNull": false,
+                    "field": "document_scope_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_type": {
+                    "allowNull": true,
+                    "field": "document_type",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "document_number": {
+                    "allowNull": true,
+                    "defaultValue": {
+                        "value": "S/N"
+                    },
+                    "field": "document_number",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "document_date": {
+                    "allowNull": true,
+                    "field": "document_date",
+                    "seqType": "Sequelize.DATE"
+                },
+                "document_status_id": {
+                    "allowNull": false,
+                    "field": "document_status_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_summary": {
+                    "allowNull": false,
+                    "field": "document_summary",
+                    "seqType": "Sequelize.STRING(2000)"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
                     "field": "updatedAt",
                     "seqType": "Sequelize.DATE"
                 }
@@ -370,61 +495,6 @@
                     "allowNull": false,
                     "field": "status_description",
                     "seqType": "Sequelize.TEXT"
-                },
-                "createdAt": {
-                    "allowNull": false,
-                    "field": "createdAt",
-                    "seqType": "Sequelize.DATE"
-                },
-                "updatedAt": {
-                    "allowNull": false,
-                    "field": "updatedAt",
-                    "seqType": "Sequelize.DATE"
-                }
-            },
-            "indexes": []
-        },
-        "documents": {
-            "tableName": "documents",
-            "schema": {
-                "document_id": {
-                    "allowNull": false,
-                    "primaryKey": true,
-                    "field": "document_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "document_scope_id": {
-                    "allowNull": false,
-                    "field": "document_scope_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "document_type": {
-                    "allowNull": true,
-                    "field": "document_type",
-                    "seqType": "Sequelize.TEXT"
-                },
-                "document_number": {
-                    "allowNull": true,
-                    "defaultValue": {
-                        "value": "S/N"
-                    },
-                    "field": "document_number",
-                    "seqType": "Sequelize.TEXT"
-                },
-                "document_date": {
-                    "allowNull": true,
-                    "field": "document_date",
-                    "seqType": "Sequelize.DATE"
-                },
-                "document_status_id": {
-                    "allowNull": false,
-                    "field": "document_status_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "document_summary": {
-                    "allowNull": false,
-                    "field": "document_summary",
-                    "seqType": "Sequelize.STRING(2000)"
                 },
                 "createdAt": {
                     "allowNull": false,
@@ -707,8 +777,8 @@
             "indexes": []
         }
     },
-    "path": "/Users/cleiton/Work/unity/api/migrations/_current.json",
-    "backupPath": "/Users/cleiton/Work/unity/api/migrations/_current_bak.json",
+    "path": "C:\\Sistemas\\SG-Legis\\api\\migrations\\_current.json",
+    "backupPath": "C:\\Sistemas\\SG-Legis\\api\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 2
+    "revision": 7
 }
