@@ -112,6 +112,11 @@
                     "field": "customer_business_name",
                     "seqType": "Sequelize.STRING(100)"
                 },
+                "customer_trade_name": {
+                    "allowNull": true,
+                    "field": "customer_trade_name",
+                    "seqType": "Sequelize.STRING(100)"
+                },
                 "customer_cnpj": {
                     "allowNull": true,
                     "field": "customer_cnpj",
@@ -496,8 +501,8 @@
             "indexes": []
         }
     },
-    "path": "/Users/cleiton/Work/unity/api/migrations/_current.json",
-    "backupPath": "/Users/cleiton/Work/unity/api/migrations/_current_bak.json",
-    "exists": true,
-    "revision": 2
+    "path": "/Users/cleiton/Work/unity/unity/api/migrations/_current.json",
+    "backupPath": "/Users/cleiton/Work/unity/unity/api/migrations/_current_bak.json",
+    "exists": false,
+    "revision": 1
 }
