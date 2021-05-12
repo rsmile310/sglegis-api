@@ -12,6 +12,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(100),
       allowNull: true
     },
+    area_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'areas',
+        key: 'area_id'
+      }
+    },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: true

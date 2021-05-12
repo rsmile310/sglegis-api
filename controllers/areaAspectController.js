@@ -1,8 +1,18 @@
-const { areas_aspects } = require('../models');
+const { areas_aspects, areas } = require('../models');
 const base = require('./baseController');
+const db = require('../models/index');
+const sequelize = require('sequelize');
 
 exports.getAll = (req, res, next) => {
-    base.getAll(areas_aspects, req, res, next);    
+    //base.getAll(areas_aspects, req, res, next);    
+    //areas_aspects.findAll({include: areas})
+    let sql = `select ap.*, ar.area_name
+    from areas_aspects ap
+    join areas ar on (ap.area_id = ar.area_id)
+    order by ap.area_aspect_name `;
+    db.sequelize.query(sql, { type: sequelize.QueryTypes.SELECT }).then(values => {
+        res.send(values);
+    });      
 }
 
 exports.get = (req, res, next) => {

@@ -43,6 +43,15 @@
                     "field": "area_aspect_name",
                     "seqType": "Sequelize.STRING(100)"
                 },
+                "area_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "areas",
+                        "key": "area_id"
+                    },
+                    "field": "area_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "createdAt": {
                     "allowNull": true,
                     "field": "createdAt",
@@ -281,6 +290,15 @@
                     "field": "customer_unity_cep",
                     "seqType": "Sequelize.STRING(9)"
                 },
+                "customer_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "customers",
+                        "key": "customer_id"
+                    },
+                    "field": "customer_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "createdAt": {
                     "allowNull": true,
                     "field": "createdAt",
@@ -300,6 +318,7 @@
                 "document_id": {
                     "allowNull": false,
                     "primaryKey": true,
+                    "autoIncrement": true,
                     "field": "document_id",
                     "seqType": "Sequelize.INTEGER"
                 },
@@ -337,12 +356,12 @@
                     "seqType": "Sequelize.STRING(2000)"
                 },
                 "createdAt": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "field": "createdAt",
                     "seqType": "Sequelize.DATE"
                 },
                 "updatedAt": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "field": "updatedAt",
                     "seqType": "Sequelize.DATE"
                 }
@@ -488,12 +507,12 @@
                     "seqType": "Sequelize.TEXT"
                 },
                 "createdAt": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "field": "createdAt",
                     "seqType": "Sequelize.DATE"
                 },
                 "updatedAt": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "field": "updatedAt",
                     "seqType": "Sequelize.DATE"
                 }
@@ -667,44 +686,30 @@
             },
             "indexes": []
         },
-        "uesrs": {
-            "tableName": "uesrs",
+        "unities_areas_aspects": {
+            "tableName": "unities_areas_aspects",
             "schema": {
-                "user_id": {
+                "id": {
                     "allowNull": false,
                     "primaryKey": true,
-                    "field": "user_id",
+                    "autoIncrement": true,
+                    "field": "id",
                     "seqType": "Sequelize.INTEGER"
                 },
-                "user_name": {
+                "unity_area_aspect_id": {
                     "allowNull": true,
-                    "field": "user_name",
-                    "seqType": "Sequelize.STRING(50)"
+                    "field": "unity_area_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
                 },
-                "user_email": {
+                "area_id": {
                     "allowNull": true,
-                    "field": "user_email",
-                    "seqType": "Sequelize.STRING(400)"
+                    "field": "area_id",
+                    "seqType": "Sequelize.INTEGER"
                 },
-                "user_password": {
+                "area_aspect_id": {
                     "allowNull": true,
-                    "field": "user_password",
-                    "seqType": "Sequelize.STRING(40)"
-                },
-                "user_first_access": {
-                    "allowNull": true,
-                    "field": "user_first_access",
-                    "seqType": "Sequelize.STRING(1)"
-                },
-                "user_status": {
-                    "allowNull": true,
-                    "field": "user_status",
-                    "seqType": "Sequelize.STRING(1)"
-                },
-                "user_change_password": {
-                    "allowNull": true,
-                    "field": "user_change_password",
-                    "seqType": "Sequelize.STRING(1)"
+                    "field": "area_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
                 },
                 "createdAt": {
                     "allowNull": true,
@@ -771,5 +776,5 @@
     "path": "C:\\Sistemas\\SG-Legis\\api\\migrations\\_current.json",
     "backupPath": "C:\\Sistemas\\SG-Legis\\api\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 6
+    "revision": 10
 }
