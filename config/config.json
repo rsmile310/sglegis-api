@@ -3,11 +3,11 @@
     "username": "mysql",
     "password": "41030a057ce7632a",
     "database": "sglegis_db",
-    "host": "172.17.0.5",
+    "host": "172.17.0.3",
     "dialect": "mysql",
     "port": 3306
   },
-  "development": {
+  "test": {
     "username": "mysql",
     "password": "5f4c097fb181abfc",
     "database": "dev_sglegis_db",
