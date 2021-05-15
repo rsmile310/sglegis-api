@@ -1,7 +1,6 @@
 const { customers_unities, unities_contacts } = require('../models');
 const base = require('./baseController');
 const db = require('../models/index');
-const options = require('./queryoptions');
 const sequelize = require('sequelize');
 
 exports.getAll = (req, res, next) => {

@@ -182,11 +182,6 @@
                     "field": "customer_business_name",
                     "seqType": "Sequelize.STRING(100)"
                 },
-                "customer_trade_name": {
-                    "allowNull": true,
-                    "field": "customer_trade_name",
-                    "seqType": "Sequelize.STRING(100)"
-                },
                 "customer_cnpj": {
                     "allowNull": true,
                     "field": "customer_cnpj",
@@ -689,15 +684,10 @@
         "unities_areas_aspects": {
             "tableName": "unities_areas_aspects",
             "schema": {
-                "id": {
+                "unity_area_aspect_id": {
                     "allowNull": false,
                     "primaryKey": true,
                     "autoIncrement": true,
-                    "field": "id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "unity_area_aspect_id": {
-                    "allowNull": true,
                     "field": "unity_area_aspect_id",
                     "seqType": "Sequelize.INTEGER"
                 },
@@ -709,6 +699,11 @@
                 "area_aspect_id": {
                     "allowNull": true,
                     "field": "area_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "customer_unity_id": {
+                    "allowNull": true,
+                    "field": "customer_unity_id",
                     "seqType": "Sequelize.INTEGER"
                 },
                 "createdAt": {
@@ -776,5 +771,5 @@
     "path": "C:\\Sistemas\\SG-Legis\\api\\migrations\\_current.json",
     "backupPath": "C:\\Sistemas\\SG-Legis\\api\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 10
+    "revision": 11
 }
