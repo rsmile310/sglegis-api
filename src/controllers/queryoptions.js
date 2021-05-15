@@ -77,31 +77,21 @@ exports.query = (req) => {
     }
 }
 
-exports.rawquery = (req) => {
+exports.rawfilter = (req) => {
     if (req.query.fields != undefined) {
-        let q = new Object();
+        let q = 'WHERE 1 = 1';
         if (Array.isArray(req.query.fields)) {
             for (let x = 0; x < req.query.fields.length; x++){
                 switch (req.query.ops[x]) {
                     case 'eq':
-                        q[req.query.fields[x]] = req.query.values[x];
+                        q += ` AND ${req.query.fields[x]} = '${req.query.values[x]}'`;
                         break;
                     case 'like':
                         break;                
                 }               
             }
-        } else {
-            if (req.query.types = 'i') {
-                q[req.query.fields] = parseInt(req.query.values);
-            } else {
-                q[req.query.fields] = req.query.values;
-            }
         }
-        let where = new Object();
-        where.where = q;
-        where = orderby(req, where);
-        where = pagination(req, where);
-        return where;
+        return q;
     }
 }
 

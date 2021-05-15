@@ -63,11 +63,11 @@ exports.query = (model, req, res, next) => {
  * Filters
  *  - fields: field to be filtered
  *  - ops: Operation to be done (eq - equal | )
- *  - value: value to be filtered on field
+ *  - values: value to be filtered on field
 */
 exports.rawquery = (query, req, res, next) => {
-    let q = options.rawquery(req);
-
+    let q = options.rawfilter(req);
+    query += q;
     db.sequelize.query(query, { type: sequelize.QueryTypes.SELECT })
         .then(values => {
             res.send(values);
