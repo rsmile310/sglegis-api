@@ -18,8 +18,7 @@ exports.getAreasAspects = (req, res, next) => {
     let sql = `select ap.*, ar.area_name, uaa.unity_area_aspect_id
                 from areas_aspects ap
                 join areas ar on (ap.area_id = ar.area_id)
-                left join unities_areas_aspects uaa on (uaa.area_id = ar.area_id and uaa.area_aspect_id = ap.area_aspect_id)
-                where (uaa.customer_unity_id = ${req.params.id} or uaa.customer_unity_id is null)
+                left join unities_areas_aspects uaa on (uaa.area_id = ar.area_id and uaa.area_aspect_id = ap.area_aspect_id and uaa.customer_unity_id = ${req.params.id})                
                order by ar.area_id, ap.area_aspect_name `;
 
     db.sequelize.query(sql, { type: sequelize.QueryTypes.SELECT }).then(values => {
@@ -94,8 +93,14 @@ exports.post = (req, res, next) => {
         .then(values => {
             //agora insert da unitycontact                
             req.body.unity_contact_customer_unity_id = values.customer_unity_id;
-            base.insert(unities_contacts, req, res, next);
-
+           
+            unities_contacts.create(req.body, { isNewRecord: true })
+            .then(v => {
+                res.send(values);
+            })
+            .catch(err => {
+                next(err);
+            });
         })
         .catch(err => {
             next(err);
