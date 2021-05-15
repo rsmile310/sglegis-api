@@ -11,6 +11,6 @@ router.delete('/:id', controller.delete);
 router.get('/:id/aspects', controller.getAreasAspects);
 
 router.post('/:id/aspects', controllerAreaAspect.post)
-router.delete('/:id/aspects/:unity_area_aspect_id', controllerAreaAspect.post)
+router.delete('/:id/aspects/:unity_area_aspect_id', controllerAreaAspect.delete)
 
 module.exports = router;

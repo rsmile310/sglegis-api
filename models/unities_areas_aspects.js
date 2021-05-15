@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function (sequelize, DataTypes) {
-    return sequelize.define('uesrs', {
+    return sequelize.define('unities_areas_aspects', {
         unity_area_aspect_id: {
             type: DataTypes.INTEGER,
             allowNull: false,

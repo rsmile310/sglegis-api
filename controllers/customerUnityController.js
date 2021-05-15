@@ -21,7 +21,7 @@ exports.getAreasAspects = (req, res, next) => {
                 join areas ar on (ap.area_id = ar.area_id)
                 left join unities_areas_aspects uaa on (uaa.area_id = ar.area_id and uaa.area_aspect_id = ap.area_aspect_id)
                 where (uaa.customer_unity_id = ${req.params.id} or uaa.customer_unity_id is null)
-               order by ar.area_id `;
+               order by ar.area_id, ap.area_aspect_name `;
 
     db.sequelize.query(sql, { type: sequelize.QueryTypes.SELECT }).then(values => {
         let obj = new Object();
@@ -42,7 +42,8 @@ exports.getAreasAspects = (req, res, next) => {
                             "area_aspect_id": values[k].area_aspect_id,
                             "area_aspect_name": values[k].area_aspect_name,
                             "checked": (values[k].unity_area_aspect_id) ? "S" : "N",
-                            "previous": (values[k].unity_area_aspect_id) ? "S" : "N"
+                            "previous": (values[k].unity_area_aspect_id) ? "S" : "N",
+                            "unity_area_aspect_id": values[k].unity_area_aspect_id
                         });
                 }
             }
