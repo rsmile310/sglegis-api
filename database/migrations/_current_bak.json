@@ -582,20 +582,20 @@
         "items_areas_aspects": {
             "tableName": "items_areas_aspects",
             "schema": {
-                "items_area_aspect_id": {
+                "item_area_aspect_id": {
                     "allowNull": false,
                     "primaryKey": true,
                     "autoIncrement": true,
-                    "field": "items_area_aspect_id",
+                    "field": "item_area_aspect_id",
                     "seqType": "Sequelize.INTEGER"
                 },
                 "area_id": {
-                    "allowNull": true,
+                    "allowNull": false,
                     "field": "area_id",
                     "seqType": "Sequelize.INTEGER"
                 },
                 "area_aspect_id": {
-                    "allowNull": true,
+                    "allowNull": false,
                     "field": "area_aspect_id",
                     "seqType": "Sequelize.INTEGER"
                 },
@@ -782,27 +782,22 @@
                     "seqType": "Sequelize.INTEGER"
                 },
                 "area_id": {
-                    "allowNull": true,
+                    "allowNull": false,
                     "field": "area_id",
                     "seqType": "Sequelize.INTEGER"
                 },
                 "area_aspect_id": {
-                    "allowNull": true,
+                    "allowNull": false,
                     "field": "area_aspect_id",
                     "seqType": "Sequelize.INTEGER"
                 },
-                "customer_unity_id": {
-                    "allowNull": true,
-                    "field": "customer_unity_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
                 "createdAt": {
-                    "allowNull": true,
+                    "allowNull": false,
                     "field": "createdAt",
                     "seqType": "Sequelize.DATE"
                 },
                 "updatedAt": {
-                    "allowNull": true,
+                    "allowNull": false,
                     "field": "updatedAt",
                     "seqType": "Sequelize.DATE"
                 }
@@ -858,8 +853,8 @@
             "indexes": []
         }
     },
-    "path": "/Users/cleiton/Work/unity/api/migrations/_current.json",
-    "backupPath": "/Users/cleiton/Work/unity/api/migrations/_current_bak.json",
+    "path": "/Users/cleiton/Work/unity/api/database/migrations/_current.json",
+    "backupPath": "/Users/cleiton/Work/unity/api/database/migrations/_current_bak.json",
     "exists": true,
-    "revision": 12
+    "revision": 16
 }

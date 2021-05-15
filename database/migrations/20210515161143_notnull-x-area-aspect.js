@@ -23,14 +23,6 @@ const info = {
 
 const migrationCommands = (transaction) => [
   {
-    fn: "renameColumn",
-    params: [
-      "items_areas_aspects",
-      "items_area_aspect_id",
-      "item_area_aspect_id",
-    ],
-  },
-  {
     fn: "changeColumn",
     params: [
       "items_areas_aspects",
@@ -63,15 +55,6 @@ const migrationCommands = (transaction) => [
       "unities_areas_aspects",
       "createdAt",
       { type: Sequelize.DATE, field: "createdAt", allowNull: false },
-      { transaction },
-    ],
-  },
-  {
-    fn: "changeColumn",
-    params: [
-      "unities_areas_aspects",
-      "customer_unity_id",
-      { type: Sequelize.INTEGER, field: "customer_unity_id", allowNull: false },
       { transaction },
     ],
   },
@@ -137,15 +120,6 @@ const rollbackCommands = (transaction) => [
       "unities_areas_aspects",
       "createdAt",
       { type: Sequelize.DATE, field: "createdAt", allowNull: true },
-      { transaction },
-    ],
-  },
-  {
-    fn: "changeColumn",
-    params: [
-      "unities_areas_aspects",
-      "customer_unity_id",
-      { type: Sequelize.INTEGER, field: "customer_unity_id", allowNull: true },
       { transaction },
     ],
   },
