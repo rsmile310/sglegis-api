@@ -10,23 +10,23 @@ module.exports = function (sequelize, DataTypes) {
         },
         area_id: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: false
         },
         area_aspect_id: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: false
         },
         customer_unity_id: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: false
         },
         createdAt: {
             type: DataTypes.DATE,
-            allowNull: true
+            allowNull: false
         },
         updatedAt: {
             type: DataTypes.DATE,
-            allowNull: true
+            allowNull: false
         }
     }, {
         tableName: 'unities_areas_aspects'
