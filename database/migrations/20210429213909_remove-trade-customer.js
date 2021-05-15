@@ -9,8 +9,8 @@ const Sequelize = require("sequelize");
 
 const info = {
   revision: 2,
-  name: "remove-customer_business_name",
-  created: "2021-05-09T19:18:17.113Z",
+  name: "remove-trade-customer",
+  created: "2021-04-29T21:39:09.129Z",
   comment: "",
 };
 
