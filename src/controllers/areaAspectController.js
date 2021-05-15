@@ -17,6 +17,10 @@ exports.getAll = (req, res, next) => {
     });
 }
 
+exports.getQuery = (req, res, next)=>{
+    base.query(areas_aspects, req, res, next);
+}
+
 function checkArea(el, area_id) {
     return el.area_id = area_id;
 }

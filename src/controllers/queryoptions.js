@@ -1,5 +1,3 @@
-const { Op } = require("sequelize");
-
 
 exports.getOptions = (req, key, value) => {
     let r = new Object();
@@ -76,6 +74,24 @@ exports.query = (req) => {
         where = orderby(req, where);
         where = pagination(req, where);
         return where;
+    }
+}
+
+exports.rawfilter = (req) => {
+    if (req.query.fields != undefined) {
+        let q = 'WHERE 1 = 1';
+        if (Array.isArray(req.query.fields)) {
+            for (let x = 0; x < req.query.fields.length; x++){
+                switch (req.query.ops[x]) {
+                    case 'eq':
+                        q += ` AND ${req.query.fields[x]} = '${req.query.values[x]}'`;
+                        break;
+                    case 'like':
+                        break;                
+                }               
+            }
+        }
+        return q;
     }
 }
 

@@ -1,4 +1,5 @@
-const errorHandler = require('../config/error');
+const db = require('../models/index');
+const sequelize = require('sequelize');
 const options = require('./queryoptions');
 
 
@@ -24,6 +25,20 @@ exports.get = (model, req, res, next, fieldId) => {
         });
 };
 
+/** 
+ * Pagination
+ *  - offset: the page number
+ *  - limit: records of pages
+ * 
+ * Order by
+ *  - direction: asc or desc
+ *  - orderby: field
+ * 
+ * Filters
+ *  - fields: field to be filtered
+ *  - ops: Operation to be done (eq - equal | )
+ *  - value: value to be filtered on field
+*/
 exports.query = (model, req, res, next) => {
     let q = options.query(req);
     model.findAll(q)
@@ -34,6 +49,32 @@ exports.query = (model, req, res, next) => {
                 next(err);
             }        
     );
+}
+
+/** 
+ * Pagination
+ *  - offset: the page number
+ *  - limit: records of pages
+ * 
+ * Order by
+ *  - direction: asc or desc
+ *  - orderby: field
+ * 
+ * Filters
+ *  - fields: field to be filtered
+ *  - ops: Operation to be done (eq - equal | )
+ *  - values: value to be filtered on field
+*/
+exports.rawquery = (query, req, res, next) => {
+    let q = options.rawfilter(req);
+    query += q;
+    db.sequelize.query(query, { type: sequelize.QueryTypes.SELECT })
+        .then(values => {
+            res.send(values);
+        })
+        .catch(err => {
+            next(err);
+        });
 }
 
 exports.insert = (model, req, res, next) => {

@@ -15,6 +15,9 @@ router.use(`/${version}/cep/`, require('./cepRoutes'));
 router.use(`/${version}/documentscope/`, require('./documentScopeRoutes'));
 router.use(`/${version}/documentstatus/`, require('./documentStatusRoutes'));
 router.use(`/${version}/document/`, require('./documentRoutes'));
-router.use(`/${version}/documentitem/`, require('./documentItemRoutes')); 
+router.use(`/${version}/documentitem/`, require('./documentItemRoutes'));
+router.use(`/${version}/praticalorder/`, require('./praticalOrdersRoutes'));
+router.use(`/${version}/conformity/`, require('./conformityRoutes'));
+router.use(`/${version}/requirements/`, require('./requirementsRouter'));
 
 module.exports = router;

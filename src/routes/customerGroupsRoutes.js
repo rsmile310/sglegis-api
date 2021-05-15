@@ -7,6 +7,7 @@ const { cities } = require('../models');
 router.post('/', controller.post);
 router.get('/', controller.getAll);
 router.get('/:id', controller.get);
+router.get('/query', controller.getQuery);
 router.put('/:id', controller.put);
 router.delete('/:id', controller.delete);
 

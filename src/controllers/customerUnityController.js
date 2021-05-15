@@ -14,6 +14,10 @@ exports.getAll = (req, res, next) => {
     });
 }
 
+exports.getQuery = (req, res, next)=>{
+    base.query(customers_unities, req, res, next);
+}
+
 exports.getAreasAspects = (req, res, next) => {
     let sql = `select ap.*, ar.area_name, uaa.unity_area_aspect_id
                 from areas_aspects ap
