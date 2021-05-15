@@ -1,4 +1,4 @@
-const { customers_unities, unities_contacts, areas, areas_aspects } = require('../models');
+const { customers_unities, unities_contacts } = require('../models');
 const base = require('./baseController');
 const db = require('../models/index');
 const options = require('./queryoptions');
@@ -12,6 +12,42 @@ exports.getAll = (req, res, next) => {
     join customers_groups cg on (cg.customer_group_id = cs.customer_group_id)    
     order by u.customer_unity_name asc`).then(values => {
         res.send(values[0]);
+    });
+}
+
+exports.getAreasAspects = (req, res, next) => {
+    let sql = `select ap.*, ar.area_name, uaa.unity_area_aspect_id
+                from areas_aspects ap
+                join areas ar on (ap.area_id = ar.area_id)
+                left join unities_areas_aspects uaa on (uaa.area_id = ar.area_id and uaa.area_aspect_id = ap.area_aspect_id)
+                where (uaa.customer_unity_id = ${req.params.id} or uaa.customer_unity_id is null)
+               order by ar.area_id `;
+
+    db.sequelize.query(sql, { type: sequelize.QueryTypes.SELECT }).then(values => {
+        let obj = new Object();
+        let areas = [];
+        let areas_id = [];
+        for (let i = 0; i < values.length; i++) {
+            if (!areas_id.includes(values[i].area_id)) {
+                areas_id.push(values[i].area_id);
+                areas.push({ "area_id": values[i].area_id, "area_name": values[i].area_name, "aspects": [] });
+            }
+        }
+
+        for (let j = 0; j < areas.length; j++) {
+            for (let k = 0; k < values.length; k++) {
+                if (values[k].area_id == areas[j].area_id) {
+                    areas[j].aspects.push(
+                        {
+                            "area_aspect_id": values[k].area_aspect_id,
+                            "area_aspect_name": values[k].area_aspect_name,
+                            "checked": (values[k].unity_area_aspect_id) ? "S" : "N",
+                            "previous": (values[k].unity_area_aspect_id) ? "S" : "N"
+                        });
+                }
+            }
+        }
+        res.send(areas);
     });
 }
 
@@ -74,4 +110,6 @@ exports.put = (req, res, next) => {
 exports.delete = (req, res, next) => {
     base.delete(customers_unities, req, res, next, 'customer_unity_id');
 }
+
+
 
