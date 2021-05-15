@@ -65,3 +65,13 @@ exports.delete = (model, req, res, next, fieldId) => {
             next(err);
         });
 }
+
+exports.deleteWithParam = (model, req, res, next, fieldId, value) => {
+    model.destroy(options.where(fieldId, value))
+        .then(values => {
+            res.status(200).send();
+        })
+        .catch(err => {
+            next(err);
+        });
+}
