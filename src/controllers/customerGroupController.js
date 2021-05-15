@@ -5,6 +5,10 @@ exports.getAll = (req, res, next) => {
     base.getAll(customers_groups, req, res, next);    
 }
 
+exports.getQuery = (req, res, next)=>{
+    base.query(customers_groups, req, res, next);
+}
+
 exports.get = (req, res, next) => {
     base.get(customers_groups, req, res, next, 'customer_group_id');
 };

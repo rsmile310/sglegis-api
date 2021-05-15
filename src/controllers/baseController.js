@@ -24,6 +24,20 @@ exports.get = (model, req, res, next, fieldId) => {
         });
 };
 
+/** 
+ * Pagination
+ *  - offset: the page number
+ *  - limit: records of pages
+ * 
+ * Order by
+ *  - direction: asc or desc
+ *  - orderby: field
+ * 
+ * Filters
+ *  - fields: field to be filtered
+ *  - ops: Operation to be done (eq - equal | )
+ *  - value: value to be filtered on field
+*/
 exports.query = (model, req, res, next) => {
     let q = options.query(req);
     model.findAll(q)
