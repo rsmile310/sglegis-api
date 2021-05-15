@@ -1,0 +1,27 @@
+{  
+  "production": {
+    "username": "usr_sglegis",
+    "password": "2021DevDbSgLegis_",
+    "database": "prod_sglegis",
+    "host": "radatz.shichi.dreamhost.com",
+    "dialect": "mysql",
+    "port": 3306
+  },
+  "development": {
+    "username": "usr_sglegis",
+    "password": "2021DevDbSgLegis_",
+    "database": "hmlg_sglegis",
+    "host": "radatz.shichi.dreamhost.com",
+    "dialect": "mysql",
+    "port": 3306
+  },
+  "local": {
+    "username": "root",
+    "password": "kill",
+    "database": "sgLegis",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "port": 3306,
+    "protocol": "tcp"
+  }
+}
