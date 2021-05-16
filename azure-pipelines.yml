@@ -4,7 +4,7 @@ variables:
   value: sglegis
 
 trigger:
-- main
+- develop
 
 pool:
   vmImage: 'ubuntu-latest'
