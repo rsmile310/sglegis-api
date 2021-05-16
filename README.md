@@ -16,3 +16,21 @@ Para gerar a migração
 Para rodar a migração (aplicar no servidor)
 
 `npx sequelize-cli db:migrate`
+
+# Publish on dokku server
+
+Para publicar no endereço criado http://dev-sglegis.200.systems, basta dar push no remote `dokku`
+
+`git push dokku main:master`
+
+## Primeira vez
+
+Caso nunca tenha feito publish, precisa configurar um novo remote no git:
+
+`git remote add dokku@199.241.139.66:dev-sglegis`
+
+
+Depois é só dar push:
+
+`git push dokku main:master`
+
