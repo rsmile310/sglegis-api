@@ -67,7 +67,9 @@ exports.query = (model, req, res, next) => {
 */
 exports.rawquery = (query, req, res, next) => {
     let q = options.rawfilter(req);
-    query += q;
+    if (q) {
+        query += q;
+    }
     db.sequelize.query(query, { type: sequelize.QueryTypes.SELECT })
         .then(values => {
             res.send(values);

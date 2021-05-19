@@ -1,15 +1,17 @@
 const { document_items } = require('../models');
 const base = require('./baseController');
+const db = require('../models/index');
+const sequelize = require('sequelize');
 
 exports.getAll = (req, res, next) => {
     base.getAll(document_items, req, res, next);    
 }
 
 exports.getAreasAspects = (req, res, next) => {
-    let sql = `select ap.*, ar.area_name, iaa.items_area_aspect_id
+    let sql = `select ap.*, ar.area_name, iaa.item_area_aspect_id
                 from areas_aspects ap
                 join areas ar on (ap.area_id = ar.area_id)
-                left join items_area_aspect_id iaa on (iaa.area_id = ar.area_id and iaa.area_aspect_id = ap.area_aspect_id)
+                left join items_areas_aspects iaa on (iaa.area_id = ar.area_id and iaa.area_aspect_id = ap.area_aspect_id)
                 where (iaa.document_item_id = ${req.params.id} or iaa.document_item_id is null)
                order by ar.area_id, ap.area_aspect_name`;
 
@@ -32,7 +34,7 @@ exports.getAreasAspects = (req, res, next) => {
                             "area_aspect_name": values[k].area_aspect_name,
                             "checked": (values[k].item_area_aspect_id) ? "S" : "N",
                             "previous": (values[k].item_area_aspect_id) ? "S" : "N",
-                            "item_area": (values[k].item_area_aspect_id),
+                            "item_area_aspect_id": (values[k].item_area_aspect_id),
                         });
                 }
             }
