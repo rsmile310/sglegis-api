@@ -1,0 +1,25 @@
+pool:
+  name: azure-pipeline-runner # the name of your azure pipeline runner
+pr: none # Don't run this pipeline for pull requests
+
+steps:
+- task: CopyFiles@2
+  displayName: 'Publish SequelizeRC'
+  inputs:
+    Contents: .sequelizerc
+    FlattenFolders: true
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Seed'
+  inputs:
+    PathtoPublish: seeders
+    TargetPath: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: seeders
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Sequelize Config Folder'
+  inputs:
+    PathtoPublish: config
+    TargetPath: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: config
