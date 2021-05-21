@@ -1,5 +1,5 @@
 {  
-  "production": {
+  "development": {
     "username": "usr_sglegis",
     "password": "2021DevDbSgLegis_",
     "database": "prod_sglegis",
@@ -7,7 +7,7 @@
     "dialect": "mysql",
     "port": 3306
   },
-  "development": {
+  "production": {
     "username": "usr_sglegis",
     "password": "2021DevDbSgLegis_",
     "database": "hmlg_sglegis",
