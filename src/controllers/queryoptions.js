@@ -63,7 +63,7 @@ exports.query = (req) => {
                 }               
             }
         } else {
-            if (req.query.types = 'i') {
+            if (req.query.types == 'i') {
                 q[req.query.fields] = parseInt(req.query.values);
             } else {
                 q[req.query.fields] = req.query.values;
