@@ -17,7 +17,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     user_password: {
-      type: DataTypes.STRING(40),
+      type: DataTypes.STRING(200),
       allowNull: true
     },
     user_profile_type: {
@@ -28,18 +28,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(20),
       allowNull: false
     },
-    // user_first_access: {
-    //   type: DataTypes.STRING(1),
-    //   allowNull: true
-    // },
-    // user_status: {
-    //   type: DataTypes.STRING(1),
-    //   allowNull: true
-    // },
-    // user_change_password: {
-    //   type: DataTypes.STRING(1),
-    //   allowNull: true
-    // },
+    is_disabled: {
+      type: DataTypes.STRING(20),
+      allowNull: true,
+      default: '0'
+    },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: true

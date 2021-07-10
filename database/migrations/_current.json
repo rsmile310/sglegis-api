@@ -828,7 +828,7 @@
                 "user_password": {
                     "allowNull": true,
                     "field": "user_password",
-                    "seqType": "Sequelize.STRING(40)"
+                    "seqType": "Sequelize.STRING(200)"
                 },
                 "user_profile_type": {
                     "allowNull": false,
@@ -838,6 +838,12 @@
                 "user_role": {
                     "allowNull": false,
                     "field": "user_role",
+                    "seqType": "Sequelize.STRING(20)"
+                },
+                "is_disabled": {
+                    "allowNull": true,
+                    "default": "0",
+                    "field": "is_disabled",
                     "seqType": "Sequelize.STRING(20)"
                 },
                 "createdAt": {
@@ -857,5 +863,5 @@
     "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
     "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 23
+    "revision": 25
 }
