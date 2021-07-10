@@ -25,10 +25,7 @@ exports.post = async (req, res, next) => {
         await email.send(user_email, "You register into Sglegis successfully", "Your password is " + str_pass);
         base.insert(users, req, res, next);
     } catch (error) {
-        return res.status(400).json({
-            cannotsendemail: "Can not send email",
-            msg: error
-        })        
+        next(error);     
     }
 }
 
@@ -50,9 +47,6 @@ exports.resetPassword = async (req, res, next) => {
         await email.send(user_email, "Your password has been changed", "Your password is " + str_pass);
         base.update(users, req, res, next, 'user_id');
     } catch (error) {
-        return res.status(400).json({
-            cannotsendemail: "Can not send email",
-            msg: error
-        })        
+        next(error);    
     }
 }
