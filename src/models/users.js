@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('users', {
+  const user = sequelize.define('users', {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -28,6 +28,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(20),
       allowNull: false
     },
+    client_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
     is_disabled: {
       type: DataTypes.STRING(20),
       allowNull: true,
@@ -44,4 +48,6 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     tableName: 'users'
   });
+
+  return user;
 };
