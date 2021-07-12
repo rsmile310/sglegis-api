@@ -1,9 +1,9 @@
 {  
   "development": {
-    "username": "usr_sglegis",
-    "password": "2021DevDbSgLegis_",
+    "username": "root",
+    "password": "",
     "database": "prod_sglegis",
-    "host": "radatz.shichi.dreamhost.com",
+    "host": "127.0.0.1",
     "dialect": "mysql",
     "port": 3306
   },

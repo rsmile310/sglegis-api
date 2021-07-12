@@ -1,11 +1,12 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('uesrs', {
+  const user = sequelize.define('users', {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      primaryKey: true
+      primaryKey: true,
+      autoIncrement : true
     },
     user_name: {
       type: DataTypes.STRING(50),
@@ -16,20 +17,25 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     user_password: {
-      type: DataTypes.STRING(40),
+      type: DataTypes.STRING(200),
       allowNull: true
     },
-    user_first_access: {
-      type: DataTypes.STRING(1),
+    user_profile_type: {
+      type: DataTypes.STRING(20),
+      allowNull: false
+    },
+    user_role: {
+      type: DataTypes.STRING(20),
+      allowNull: false
+    },
+    client_id: {
+      type: DataTypes.INTEGER,
       allowNull: true
     },
-    user_status: {
-      type: DataTypes.STRING(1),
-      allowNull: true
-    },
-    user_change_password: {
-      type: DataTypes.STRING(1),
-      allowNull: true
+    is_disabled: {
+      type: DataTypes.STRING(20),
+      allowNull: true,
+      default: '0'
     },
     createdAt: {
       type: DataTypes.DATE,
@@ -40,6 +46,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     }
   }, {
-    tableName: 'uesrs'
+    tableName: 'users'
   });
+
+  return user;
 };

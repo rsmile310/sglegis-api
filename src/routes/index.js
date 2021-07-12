@@ -19,5 +19,6 @@ router.use(`/${version}/documentitem/`, require('./documentItemRoutes'));
 router.use(`/${version}/praticalorder/`, require('./praticalOrdersRoutes'));
 router.use(`/${version}/conformity/`, require('./conformityRoutes'));
 router.use(`/${version}/requirements/`, require('./requirementsRouter'));
+router.use(`/${version}/users/`, require('./userRoutes'));
 
 module.exports = router;

@@ -12,12 +12,14 @@
     "fs": "^0.0.1-security",
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
+    "nodemailer": "^6.6.2",
     "path": "^0.12.7",
     "sequelize": "^6.6.2",
-    "sequelize-auto": "^0.8.2"
+    "sequelize-auto": "^0.8.2",
+    "bcryptjs": "^2.4.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.9",
     "sequelize-cli": "^6.2.0",
     "sequelize-mig": "^3.1.3"
   }

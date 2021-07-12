@@ -307,6 +307,62 @@
             },
             "indexes": []
         },
+        "documents": {
+            "tableName": "documents",
+            "schema": {
+                "document_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "document_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_scope_id": {
+                    "allowNull": false,
+                    "field": "document_scope_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_type": {
+                    "allowNull": true,
+                    "field": "document_type",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "document_number": {
+                    "allowNull": true,
+                    "defaultValue": {
+                        "value": "S/N"
+                    },
+                    "field": "document_number",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "document_date": {
+                    "allowNull": true,
+                    "field": "document_date",
+                    "seqType": "Sequelize.DATE"
+                },
+                "document_status_id": {
+                    "allowNull": false,
+                    "field": "document_status_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_summary": {
+                    "allowNull": false,
+                    "field": "document_summary",
+                    "seqType": "Sequelize.STRING(2000)"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
         "document_attachments": {
             "tableName": "document_attachments",
             "schema": {
@@ -444,62 +500,6 @@
                     "allowNull": false,
                     "field": "status_description",
                     "seqType": "Sequelize.TEXT"
-                },
-                "createdAt": {
-                    "allowNull": true,
-                    "field": "createdAt",
-                    "seqType": "Sequelize.DATE"
-                },
-                "updatedAt": {
-                    "allowNull": true,
-                    "field": "updatedAt",
-                    "seqType": "Sequelize.DATE"
-                }
-            },
-            "indexes": []
-        },
-        "documents": {
-            "tableName": "documents",
-            "schema": {
-                "document_id": {
-                    "allowNull": false,
-                    "primaryKey": true,
-                    "autoIncrement": true,
-                    "field": "document_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "document_scope_id": {
-                    "allowNull": false,
-                    "field": "document_scope_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "document_type": {
-                    "allowNull": true,
-                    "field": "document_type",
-                    "seqType": "Sequelize.TEXT"
-                },
-                "document_number": {
-                    "allowNull": true,
-                    "defaultValue": {
-                        "value": "S/N"
-                    },
-                    "field": "document_number",
-                    "seqType": "Sequelize.TEXT"
-                },
-                "document_date": {
-                    "allowNull": true,
-                    "field": "document_date",
-                    "seqType": "Sequelize.DATE"
-                },
-                "document_status_id": {
-                    "allowNull": false,
-                    "field": "document_status_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "document_summary": {
-                    "allowNull": false,
-                    "field": "document_summary",
-                    "seqType": "Sequelize.STRING(2000)"
                 },
                 "createdAt": {
                     "allowNull": true,
@@ -719,58 +719,6 @@
             },
             "indexes": []
         },
-        "uesrs": {
-            "tableName": "uesrs",
-            "schema": {
-                "user_id": {
-                    "allowNull": false,
-                    "primaryKey": true,
-                    "field": "user_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "user_name": {
-                    "allowNull": true,
-                    "field": "user_name",
-                    "seqType": "Sequelize.STRING(50)"
-                },
-                "user_email": {
-                    "allowNull": true,
-                    "field": "user_email",
-                    "seqType": "Sequelize.STRING(400)"
-                },
-                "user_password": {
-                    "allowNull": true,
-                    "field": "user_password",
-                    "seqType": "Sequelize.STRING(40)"
-                },
-                "user_first_access": {
-                    "allowNull": true,
-                    "field": "user_first_access",
-                    "seqType": "Sequelize.STRING(1)"
-                },
-                "user_status": {
-                    "allowNull": true,
-                    "field": "user_status",
-                    "seqType": "Sequelize.STRING(1)"
-                },
-                "user_change_password": {
-                    "allowNull": true,
-                    "field": "user_change_password",
-                    "seqType": "Sequelize.STRING(1)"
-                },
-                "createdAt": {
-                    "allowNull": true,
-                    "field": "createdAt",
-                    "seqType": "Sequelize.DATE"
-                },
-                "updatedAt": {
-                    "allowNull": true,
-                    "field": "updatedAt",
-                    "seqType": "Sequelize.DATE"
-                }
-            },
-            "indexes": []
-        },
         "unities_areas_aspects": {
             "tableName": "unities_areas_aspects",
             "schema": {
@@ -856,10 +804,69 @@
                 }
             },
             "indexes": []
+        },
+        "users": {
+            "tableName": "users",
+            "schema": {
+                "user_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "user_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "user_name": {
+                    "allowNull": true,
+                    "field": "user_name",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "user_email": {
+                    "allowNull": true,
+                    "field": "user_email",
+                    "seqType": "Sequelize.STRING(400)"
+                },
+                "user_password": {
+                    "allowNull": true,
+                    "field": "user_password",
+                    "seqType": "Sequelize.STRING(200)"
+                },
+                "user_profile_type": {
+                    "allowNull": false,
+                    "field": "user_profile_type",
+                    "seqType": "Sequelize.STRING(20)"
+                },
+                "user_role": {
+                    "allowNull": false,
+                    "field": "user_role",
+                    "seqType": "Sequelize.STRING(20)"
+                },
+                "client_id": {
+                    "allowNull": true,
+                    "field": "client_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "is_disabled": {
+                    "allowNull": true,
+                    "default": "0",
+                    "field": "is_disabled",
+                    "seqType": "Sequelize.STRING(20)"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
         }
     },
-    "path": "/Users/cleiton/Work/unity/api/database/migrations/_current.json",
-    "backupPath": "/Users/cleiton/Work/unity/api/database/migrations/_current_bak.json",
+    "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
+    "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 17
+    "revision": 41
 }
