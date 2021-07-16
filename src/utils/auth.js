@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { Keys } = require('../config/keys');
+const { customers_groups } = require('../models');
 const { isEmpty } = require('./functions');
 
 
@@ -36,12 +37,14 @@ exports.verityPassword = (password, hash) => {
 }
 
 exports.loginJWT = (user) => {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         jwt.sign({
             id: user.user_id,
+            email: user.user_email,
             name: user.user_name,
             role: user.user_role,
-            email: user.user_email
+            user_profile_type: user.user_profile_type,
+            customer_group_id: user.customer_group_id,
         }, Keys.secretOrKey, { expiresIn: '1h' }, (err, token) => {
             if (!isEmpty(err)) reject(err);
             resolve('Bearer ' + token);

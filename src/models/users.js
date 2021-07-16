@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  const user = sequelize.define('users', {
+  return sequelize.define('users', {
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -30,7 +30,19 @@ module.exports = function(sequelize, DataTypes) {
     },
     client_id: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'users',
+        key: 'user_id'
+      }
+    },    
+    customer_group_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'customers_groups',
+        key: 'customer_group_id'
+      }
     },
     is_disabled: {
       type: DataTypes.STRING(20),
@@ -48,6 +60,4 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     tableName: 'users'
   });
-
-  return user;
 };

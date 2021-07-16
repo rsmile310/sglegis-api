@@ -3,10 +3,14 @@ const sequelize = require('sequelize');
 const options = require('./queryoptions');
 
 
-exports.getAll = (model, req, res, next) => {
+exports.getAll = (model, req, res, next, populate = null) => {
     model.findAll(options.getOptions(req))
-        .then(values => {
-            res.send(values);
+        .then(async (values) => {
+            let resValues = values;
+            if (populate !== null) {
+                resValues = await getPopulate(resValues, populate[0]);
+            }
+            return res.send(resValues)
         })
         .catch(err => {
             next(err);
@@ -39,16 +43,18 @@ exports.get = (model, req, res, next, fieldId) => {
  *  - ops: Operation to be done (eq - equal | )
  *  - value: value to be filtered on field
 */
-exports.query = (model, req, res, next) => {
-    let q = options.query(req);
-    model.findAll(q)
-            .then(values => {
-                res.send(values);
-            })
-            .catch(err => {
-                next(err);
-            }        
-    );
+exports.query = async (model, req, res, next, populate = null) => {
+    let q = options.query(req);    
+    try {
+        let resData = await model.findAll(q);
+        if (populate) {
+            resData = await getPopulate(resData, populate[0]);
+        }
+        return res.send(resData);
+    } catch (err) {
+        next(err)
+    }
+    
 }
 
 /** 
@@ -117,4 +123,17 @@ exports.deleteWithParam = (model, req, res, next, fieldId, value) => {
         .catch(err => {
             next(err);
         });
+}
+
+const getPopulate = (arrayValues, populate) => {
+    const { as, model, referenceKey, referenceValue } = populate;
+    return Promise.all(arrayValues.map(async (values) => {
+        const popValue = await model.findOne({
+            where: { [referenceKey]: values[referenceValue] }
+        })
+        values.dataValues[as] = popValue ? { ...popValue?.dataValues } : {};
+        return {
+            ...values.dataValues
+        }
+    }));
 }

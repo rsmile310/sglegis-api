@@ -5,13 +5,24 @@ const { generatePassword, getHash, verityPassword, loginJWT } = require('../util
 const validateLogin = require('../validations/login');
 const { isEmpty } = require('../utils/functions');
 const { Keys } = require('../config/keys');
+const { customers_groups } = require('../models');
 
 exports.getAll = (req, res, next) => {
-    base.getAll(users, req, res, next);    
+    base.getAll(users, req, res, next, [{
+        as: "customer_group",
+        model: customers_groups,
+        referenceKey: "customer_group_id",
+        referenceValue: "customer_group_id"      
+    }]);    
 }
 
 exports.getQuery = (req, res, next)=>{
-    base.query(users, req, res, next);
+    base.query(users, req, res, next, [{
+        as: "customer_group",
+        model: customers_groups,
+        referenceKey: "customer_group_id",
+        referenceValue: "customer_group_id"      
+    }]);
 }
 
 exports.get = (req, res, next) => {
@@ -95,10 +106,13 @@ exports.current = async (req, res, next) => {
             user_id: req.user.id
         }
     });
+
     return res.json({
         id: user.user_id,
         email: user.user_email,
         name: user.user_name,
-        role: user.user_role
+        role: user.user_role,
+        user_profile_type: user.user_profile_type,
+        customer_group_id: user.customer_group_id,
     });
 }
