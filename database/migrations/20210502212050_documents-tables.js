@@ -192,6 +192,7 @@ const migrationCommands = (transaction) => [
           field: "document_id",
           primaryKey: true,
           allowNull: false,
+          autoIncrement: true,
         },
         document_scope_id: {
           type: Sequelize.INTEGER,

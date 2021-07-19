@@ -830,6 +830,12 @@
                     "field": "user_name",
                     "seqType": "Sequelize.STRING(50)"
                 },
+                "user_email": {
+                    "allowNull": false,
+                    "unique": true,
+                    "field": "user_email",
+                    "seqType": "Sequelize.STRING(400)"
+                },
                 "user_password": {
                     "allowNull": true,
                     "field": "user_password",
@@ -886,5 +892,5 @@
     "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
     "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 58
+    "revision": 59
 }
