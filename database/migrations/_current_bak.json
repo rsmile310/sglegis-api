@@ -379,6 +379,16 @@
                     "field": "attachment_item_id",
                     "seqType": "Sequelize.INTEGER"
                 },
+                "attachment_description": {
+                    "allowNull": true,
+                    "field": "attachment_description",
+                    "seqType": "Sequelize.STRING(200)"
+                },
+                "attachment_src": {
+                    "allowNull": true,
+                    "field": "attachment_src",
+                    "seqType": "Sequelize.STRING(268)"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "field": "createdAt",
@@ -820,11 +830,6 @@
                     "field": "user_name",
                     "seqType": "Sequelize.STRING(50)"
                 },
-                "user_email": {
-                    "allowNull": true,
-                    "field": "user_email",
-                    "seqType": "Sequelize.STRING(400)"
-                },
                 "user_password": {
                     "allowNull": true,
                     "field": "user_password",
@@ -842,11 +847,19 @@
                 },
                 "client_id": {
                     "allowNull": true,
+                    "references": {
+                        "model": "users",
+                        "key": "user_id"
+                    },
                     "field": "client_id",
                     "seqType": "Sequelize.INTEGER"
                 },
                 "customer_group_id": {
                     "allowNull": true,
+                    "references": {
+                        "model": "customers_groups",
+                        "key": "customer_group_id"
+                    },
                     "field": "customer_group_id",
                     "seqType": "Sequelize.INTEGER"
                 },
@@ -873,5 +886,5 @@
     "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
     "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 45
+    "revision": 58
 }

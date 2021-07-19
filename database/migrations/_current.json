@@ -379,6 +379,16 @@
                     "field": "attachment_item_id",
                     "seqType": "Sequelize.INTEGER"
                 },
+                "attachment_description": {
+                    "allowNull": true,
+                    "field": "attachment_description",
+                    "seqType": "Sequelize.STRING(200)"
+                },
+                "attachment_src": {
+                    "allowNull": true,
+                    "field": "attachment_src",
+                    "seqType": "Sequelize.STRING(268)"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "field": "createdAt",
@@ -821,7 +831,8 @@
                     "seqType": "Sequelize.STRING(50)"
                 },
                 "user_email": {
-                    "allowNull": true,
+                    "allowNull": false,
+                    "unique": true,
                     "field": "user_email",
                     "seqType": "Sequelize.STRING(400)"
                 },
@@ -881,5 +892,5 @@
     "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
     "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 46
+    "revision": 59
 }
