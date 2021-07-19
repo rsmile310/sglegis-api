@@ -16,9 +16,11 @@ router.use(`/${version}/documentscope/`, require('./documentScopeRoutes'));
 router.use(`/${version}/documentstatus/`, require('./documentStatusRoutes'));
 router.use(`/${version}/document/`, require('./documentRoutes'));
 router.use(`/${version}/documentitem/`, require('./documentItemRoutes'));
+router.use(`/${version}/document-attachment/`, require('./documentAttachmentRoutes'));
 router.use(`/${version}/praticalorder/`, require('./praticalOrdersRoutes'));
 router.use(`/${version}/conformity/`, require('./conformityRoutes'));
 router.use(`/${version}/requirements/`, require('./requirementsRouter'));
 router.use(`/${version}/users/`, require('./userRoutes'));
+// router.use(`/${version}/files/`, require())
 
 module.exports = router;
