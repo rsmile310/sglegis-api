@@ -44,8 +44,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'customers',
-        key: 'customer_id'
+        model: 'users',
+        key: 'user_id'
       }
     },
     createdAt: {
