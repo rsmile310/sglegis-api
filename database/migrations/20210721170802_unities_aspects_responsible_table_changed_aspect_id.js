@@ -3,38 +3,36 @@ const Sequelize = require("sequelize");
 /**
  * Actions summary:
  *
- * addColumn(customer_id) => "customers_unities"
+ * renameColumn(area_aspect_id) => "unities_aspects_responsibles"
  *
  */
 
 const info = {
-  revision: 7,
-  name: "customers_unities",
-  created: "2021-05-05T02:15:59.254Z",
+  revision: 67,
+  name: "unities_aspects_responsible_table_changed_aspect_id",
+  created: "2021-07-21T17:08:02.510Z",
   comment: "",
 };
 
 const migrationCommands = (transaction) => [
   {
-    fn: "addColumn",
+    fn: "renameColumn",
     params: [
-      "customers_unities",
-      "customer_id",
-      {
-        type: Sequelize.INTEGER,
-        field: "customer_id",
-        references: { model: "users", key: "user_id" },
-        allowNull: true,
-      },
-      { transaction },
+      "unities_aspects_responsibles",
+      "area_aspect_id",
+      "responsible_aspect_id",
     ],
   },
 ];
 
 const rollbackCommands = (transaction) => [
   {
-    fn: "removeColumn",
-    params: ["customers_unities", "customer_id", { transaction }],
+    fn: "renameColumn",
+    params: [
+      "unities_aspects_responsibles",
+      "responsible_aspect_id",
+      "area_aspect_id",
+    ],
   },
 ];
 

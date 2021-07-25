@@ -3,28 +3,50 @@ const Sequelize = require("sequelize");
 /**
  * Actions summary:
  *
- * addColumn(customer_id) => "customers_unities"
+ * createTable() => "responsibles_aspects", deps: []
  *
  */
 
 const info = {
-  revision: 7,
-  name: "customers_unities",
-  created: "2021-05-05T02:15:59.254Z",
+  revision: 66,
+  name: "responsibles_aspects_table",
+  created: "2021-07-21T17:06:55.004Z",
   comment: "",
 };
 
 const migrationCommands = (transaction) => [
   {
-    fn: "addColumn",
+    fn: "createTable",
     params: [
-      "customers_unities",
-      "customer_id",
+      "responsibles_aspects",
       {
-        type: Sequelize.INTEGER,
-        field: "customer_id",
-        references: { model: "users", key: "user_id" },
-        allowNull: true,
+        responsible_aspect_id: {
+          type: Sequelize.INTEGER,
+          field: "responsible_aspect_id",
+          autoIncrement: true,
+          primaryKey: true,
+          allowNull: false,
+        },
+        area_aspect_id: {
+          type: Sequelize.INTEGER,
+          field: "area_aspect_id",
+          allowNull: false,
+        },
+        unity_aspect_responsible_id: {
+          type: Sequelize.INTEGER,
+          field: "unity_aspect_responsible_id",
+          allowNull: false,
+        },
+        createdAt: {
+          type: Sequelize.DATE,
+          field: "createdAt",
+          allowNull: false,
+        },
+        updatedAt: {
+          type: Sequelize.DATE,
+          field: "updatedAt",
+          allowNull: false,
+        },
       },
       { transaction },
     ],
@@ -33,8 +55,8 @@ const migrationCommands = (transaction) => [
 
 const rollbackCommands = (transaction) => [
   {
-    fn: "removeColumn",
-    params: ["customers_unities", "customer_id", { transaction }],
+    fn: "dropTable",
+    params: ["responsibles_aspects", { transaction }],
   },
 ];
 

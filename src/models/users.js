@@ -14,8 +14,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     user_email: {
       type: DataTypes.STRING(400),
-      allowNull: false,
-      unique: true
+      allowNull: true
     },
     user_password: {
       type: DataTypes.STRING(200),

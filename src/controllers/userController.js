@@ -30,17 +30,18 @@ exports.get = (req, res, next) => {
 };
 
 exports.post = async (req, res, next) => {
-    const str_pass = await generatePassword(10);
+    // const str_pass = await generatePassword(10);
+    const str_pass = "123456789";
     const hash_pass = await getHash(str_pass);
     req.body.user_password = hash_pass;
 
-    try {
-        const { user_email } = req.body;
-        await email.send(user_email, "You register into Sglegis successfully", "Your password is " + str_pass);
+    // try {
+    //     const { user_email } = req.body;
+    //     await email.send(user_email, "You register into Sglegis successfully", "Your password is " + str_pass);
         base.insert(users, req, res, next);
-    } catch (error) {
-        next(error);     
-    }
+    // } catch (error) {
+    //     next(error);     
+    // }
 }
 
 exports.put = (req, res, next) => {

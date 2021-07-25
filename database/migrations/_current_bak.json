@@ -288,8 +288,8 @@
                 "customer_id": {
                     "allowNull": true,
                     "references": {
-                        "model": "customers",
-                        "key": "customer_id"
+                        "model": "users",
+                        "key": "user_id"
                     },
                     "field": "customer_id",
                     "seqType": "Sequelize.INTEGER"
@@ -703,6 +703,39 @@
             },
             "indexes": []
         },
+        "responsibles_aspects": {
+            "tableName": "responsibles_aspects",
+            "schema": {
+                "responsible_aspect_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "responsible_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "area_aspect_id": {
+                    "allowNull": false,
+                    "field": "area_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "unity_aspect_responsible_id": {
+                    "allowNull": false,
+                    "field": "unity_aspect_responsible_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
         "states": {
             "tableName": "states",
             "schema": {
@@ -759,6 +792,49 @@
                     "allowNull": false,
                     "field": "customer_unity_id",
                     "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "unities_aspects_responsibles": {
+            "tableName": "unities_aspects_responsibles",
+            "schema": {
+                "unity_aspect_responsible_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "unity_aspect_responsible_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "responsible_aspect_id": {
+                    "allowNull": false,
+                    "field": "responsible_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "customer_unity_id": {
+                    "allowNull": false,
+                    "field": "customer_unity_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "unity_aspect_responsible_name": {
+                    "allowNull": true,
+                    "field": "unity_aspect_responsible_name",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "unity_aspect_responsible_email": {
+                    "allowNull": true,
+                    "field": "unity_aspect_responsible_email",
+                    "seqType": "Sequelize.STRING(400)"
                 },
                 "createdAt": {
                     "allowNull": false,
@@ -837,8 +913,7 @@
                     "seqType": "Sequelize.STRING(50)"
                 },
                 "user_email": {
-                    "allowNull": false,
-                    "unique": true,
+                    "allowNull": true,
                     "field": "user_email",
                     "seqType": "Sequelize.STRING(400)"
                 },
@@ -898,5 +973,5 @@
     "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
     "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 60
+    "revision": 67
 }
