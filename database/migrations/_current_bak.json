@@ -389,6 +389,12 @@
                     "field": "attachment_src",
                     "seqType": "Sequelize.STRING(268)"
                 },
+                "document_id": {
+                    "allowNull": false,
+                    "Comment": "ID do documento que este item pertence",
+                    "field": "document_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "field": "createdAt",
@@ -892,5 +898,5 @@
     "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
     "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 59
+    "revision": 60
 }
