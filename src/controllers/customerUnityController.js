@@ -7,7 +7,7 @@ exports.getAll = (req, res, next) => {
     db.sequelize.query(`select * 
     from customers_unities u 
     join unities_contacts c on (u.customer_unity_id = c.unity_contact_customer_unity_id)
-    join customers cs on (cs.customer_id = u.customer_id)
+    join users cs on (cs.user_id = u.customer_id)
     join customers_groups cg on (cg.customer_group_id = cs.customer_group_id)    
     order by u.customer_unity_name asc`).then(values => {
         res.send(values[0]);
