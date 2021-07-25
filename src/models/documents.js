@@ -8,6 +8,8 @@ module.exports = function (sequelize, DataTypes) {
         document_date: { type: DataTypes.DATE, allowNull: true },
         document_status_id: { type: DataTypes.INTEGER, allowNull: false },
         document_summary: { type: DataTypes.STRING(2000), allowNull: false },
+        document_state_id: { type: DataTypes.INTEGER, allowNull: true, Comment: "The region of country document is valid (filled when scope = state)" },
+        document_city_id: { type: DataTypes.INTEGER, allowNull: true, Comment: "The city of region (state) document is valid (filled when scope = city)" },
         createdAt: { type: DataTypes.DATE, allowNull: true },
         updatedAt: { type: DataTypes.DATE, allowNull: true}
     }, {
