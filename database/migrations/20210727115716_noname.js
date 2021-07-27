@@ -3,24 +3,34 @@ const Sequelize = require("sequelize");
 /**
  * Actions summary:
  *
- * addColumn(customer_id) => "customers"
+ * removeColumn(customer_group_id) => "users"
+ * addColumn(customer_id) => "users"
  *
  */
 
 const info = {
-  revision: 41,
-  name: "user_tbl_added_client",
-  created: "2021-07-12T02:32:05.045Z",
+  revision: 73,
+  name: "noname",
+  created: "2021-07-27T11:57:16.589Z",
   comment: "",
 };
 
 const migrationCommands = (transaction) => [
   {
+    fn: "removeColumn",
+    params: ["users", "customer_group_id", { transaction }],
+  },
+  {
     fn: "addColumn",
     params: [
-      "customers",
+      "users",
       "customer_id",
-      { type: Sequelize.INTEGER, field: "customer_id", allowNull: true },
+      {
+        type: Sequelize.INTEGER,
+        field: "customer_id",
+        references: { model: "customers", key: "customer_id" },
+        allowNull: true,
+      },
       { transaction },
     ],
   },
@@ -29,7 +39,21 @@ const migrationCommands = (transaction) => [
 const rollbackCommands = (transaction) => [
   {
     fn: "removeColumn",
-    params: ["customers", "customer_id", { transaction }],
+    params: ["users", "customer_id", { transaction }],
+  },
+  {
+    fn: "addColumn",
+    params: [
+      "users",
+      "customer_group_id",
+      {
+        type: Sequelize.INTEGER,
+        field: "customer_group_id",
+        references: { model: "customers_groups", key: "customer_group_id" },
+        allowNull: true,
+      },
+      { transaction },
+    ],
   },
 ];
 

@@ -28,22 +28,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(20),
       allowNull: false
     },
-    client_id: {
+    customer_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
-        model: 'users',
-        key: 'user_id'
+        model: 'customers',
+        key: 'customer_id'
       }
     },    
-    customer_group_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: 'customers_groups',
-        key: 'customer_group_id'
-      }
-    },
     is_disabled: {
       type: DataTypes.STRING(20),
       allowNull: true,

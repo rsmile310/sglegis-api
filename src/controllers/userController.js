@@ -6,23 +6,31 @@ const validateLogin = require('../validations/login');
 const { isEmpty } = require('../utils/functions');
 const { Keys } = require('../config/keys');
 const { customers_groups } = require('../models');
+const db = require('../models');
 
-exports.getAll = (req, res, next) => {
-    base.getAll(users, req, res, next, [{
-        as: "customer_group",
-        model: customers_groups,
-        referenceKey: "customer_group_id",
-        referenceValue: "customer_group_id"      
-    }]);    
+exports.getAll = async (req, res, next) => {
+    try {
+        let sql = `SELECT *
+            FROM users u
+            LEFT JOIN customers c ON (c.customer_id = u.customer_id)
+            LEFT JOIN customers_groups cg ON (cg.customer_group_id = c.customer_group_id)`
+        const values = await db.sequelize.query(sql);
+        return res.send(values[0]);
+    } catch (error) {
+        next(error);        
+    }  
 }
 
-exports.getQuery = (req, res, next)=>{
-    base.query(users, req, res, next, [{
-        as: "customer_group",
-        model: customers_groups,
-        referenceKey: "customer_group_id",
-        referenceValue: "customer_group_id"      
-    }]);
+exports.getQuery = async (req, res, next)=>{
+    try {
+        let sql = `SELECT *
+            FROM users u
+            LEFT JOIN customers c ON c.customer_id = u.customer_id`
+        const values = await db.sequelize.query(sql);
+        return res.send(values[0]);
+    } catch (error) {
+        next(error);        
+    }
 }
 
 exports.get = (req, res, next) => {
@@ -30,18 +38,17 @@ exports.get = (req, res, next) => {
 };
 
 exports.post = async (req, res, next) => {
-    // const str_pass = await generatePassword(10);
-    const str_pass = "123456789";
+    const str_pass = await generatePassword(10);
     const hash_pass = await getHash(str_pass);
     req.body.user_password = hash_pass;
 
-    // try {
-    //     const { user_email } = req.body;
-    //     await email.send(user_email, "You register into Sglegis successfully", "Your password is " + str_pass);
+    try {
+        const { user_email } = req.body;
+        await email.send(user_email, "You register into Sglegis successfully", "Your password is " + str_pass);
         base.insert(users, req, res, next);
-    // } catch (error) {
-    //     next(error);     
-    // }
+    } catch (error) {
+        next(error);     
+    }
 }
 
 exports.put = (req, res, next) => {
@@ -101,19 +108,23 @@ exports.login = async (req, res, next) => {
     }
 }
 
-exports.current = async (req, res, next) => {
-    const user = await users.findOne({
-        where: {
-            user_id: req.user.id
-        }
-    });
-
-    return res.json({
-        id: user.user_id,
-        email: user.user_email,
-        name: user.user_name,
-        role: user.user_role,
-        user_profile_type: user.user_profile_type,
-        customer_group_id: user.customer_group_id,
-    });
+exports.current = async (req, res, next) => {    
+    try {
+        let sql = `SELECT *
+            FROM users u
+            LEFT JOIN customers c ON c.customer_id = u.customer_id
+            WHERE u.user_id = ${req.user.id}`
+        const values = await db.sequelize.query(sql);
+        const user = values[0][0];
+        return res.json({
+            id: user.user_id,
+            email: user.user_email,
+            name: user.user_name,
+            role: user.user_role,
+            user_profile_type: user.user_profile_type,
+            customer_group_id: user.customer_group_id,
+        });
+    } catch (error) {
+        next(error);        
+    }
 }

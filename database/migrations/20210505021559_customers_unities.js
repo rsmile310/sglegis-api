@@ -23,7 +23,7 @@ const migrationCommands = (transaction) => [
       {
         type: Sequelize.INTEGER,
         field: "customer_id",
-        references: { model: "users", key: "user_id" },
+        references: { model: "customers", key: "customer_id" },
         allowNull: true,
       },
       { transaction },
