@@ -33,12 +33,12 @@ const migrationCommands = (transaction) => [
   {
     fn: "changeColumn",
     params: [
-      "users",
-      "client_id",
+      "customers",
+      "customer_id",
       {
         type: Sequelize.INTEGER,
-        field: "client_id",
-        references: { model: "users", key: "user_id" },
+        field: "customer_id",
+        references: { model: "customers", key: "customer_id" },
         allowNull: true,
       },
       { transaction },
@@ -54,9 +54,9 @@ const rollbackCommands = (transaction) => [
   {
     fn: "changeColumn",
     params: [
-      "users",
-      "client_id",
-      { type: Sequelize.INTEGER, field: "client_id", allowNull: true },
+      "customers",
+      "customer_id",
+      { type: Sequelize.INTEGER, field: "customer_id", allowNull: true },
       { transaction },
     ],
   },

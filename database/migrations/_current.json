@@ -288,8 +288,8 @@
                 "customer_id": {
                     "allowNull": true,
                     "references": {
-                        "model": "users",
-                        "key": "user_id"
+                        "model": "customers",
+                        "key": "customer_id"
                     },
                     "field": "customer_id",
                     "seqType": "Sequelize.INTEGER"
@@ -927,22 +927,13 @@
                     "field": "user_role",
                     "seqType": "Sequelize.STRING(20)"
                 },
-                "client_id": {
+                "customer_id": {
                     "allowNull": true,
                     "references": {
-                        "model": "users",
-                        "key": "user_id"
+                        "model": "customers",
+                        "key": "customer_id"
                     },
-                    "field": "client_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "customer_group_id": {
-                    "allowNull": true,
-                    "references": {
-                        "model": "customers_groups",
-                        "key": "customer_group_id"
-                    },
-                    "field": "customer_group_id",
+                    "field": "customer_id",
                     "seqType": "Sequelize.INTEGER"
                 },
                 "is_disabled": {
@@ -968,5 +959,5 @@
     "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
     "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 68
+    "revision": 73
 }
