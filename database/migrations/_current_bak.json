@@ -598,11 +598,11 @@
         "items_areas_aspects": {
             "tableName": "items_areas_aspects",
             "schema": {
-                "item_area_aspect_id": {
+                "id": {
                     "allowNull": false,
                     "primaryKey": true,
                     "autoIncrement": true,
-                    "field": "item_area_aspect_id",
+                    "field": "id",
                     "seqType": "Sequelize.INTEGER"
                 },
                 "area_id": {
@@ -927,13 +927,13 @@
                     "field": "user_role",
                     "seqType": "Sequelize.STRING(20)"
                 },
-                "customer_group_id": {
+                "customer_id": {
                     "allowNull": true,
                     "references": {
-                        "model": "customers_groups",
-                        "key": "customer_group_id"
+                        "model": "customers",
+                        "key": "customer_id"
                     },
-                    "field": "customer_group_id",
+                    "field": "customer_id",
                     "seqType": "Sequelize.INTEGER"
                 },
                 "is_disabled": {
@@ -959,5 +959,5 @@
     "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
     "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 72
+    "revision": 76
 }
