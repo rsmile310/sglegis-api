@@ -598,11 +598,11 @@
         "items_areas_aspects": {
             "tableName": "items_areas_aspects",
             "schema": {
-                "id": {
+                "item_area_aspect_id": {
                     "allowNull": false,
                     "primaryKey": true,
                     "autoIncrement": true,
-                    "field": "id",
+                    "field": "item_area_aspect_id",
                     "seqType": "Sequelize.INTEGER"
                 },
                 "area_id": {
@@ -959,5 +959,5 @@
     "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
     "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 76
+    "revision": 84
 }
