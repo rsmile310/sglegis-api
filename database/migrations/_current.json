@@ -970,6 +970,6 @@
     },
     "path": "/Users/cleiton/Work/unity/github/sglegis-api/database/migrations/_current.json",
     "backupPath": "/Users/cleiton/Work/unity/github/sglegis-api/database/migrations/_current_bak.json",
-    "exists": true,
-    "revision": 73
+    "exists": false,
+    "revision": 1
 }
