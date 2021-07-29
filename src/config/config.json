@@ -6,5 +6,13 @@
     "host": "127.0.0.1",
     "dialect": "mysql",
     "port": 3306
+  },
+  "production": {
+    "username": "usr_sglegis",
+    "password": "2021DevDbSgLegis_",
+    "database": "hmlg_sglegis",
+    "host": "radatz.shichi.dreamhost.com",
+    "dialect": "mysql",
+    "port": 3306
   }
 }
