@@ -21,5 +21,6 @@ router.use(`/${version}/praticalorder/`, require('./praticalOrdersRoutes'));
 router.use(`/${version}/conformity/`, require('./conformityRoutes'));
 router.use(`/${version}/requirements/`, require('./requirementsRouter'));
 router.use(`/${version}/users/`, require('./userRoutes'));
+router.use(`/${version}/audits/`, require('./auditRoutes'));
 
 module.exports = router;

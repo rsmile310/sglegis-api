@@ -65,6 +65,59 @@
             },
             "indexes": []
         },
+        "audits": {
+            "tableName": "audits",
+            "schema": {
+                "audit_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "audit_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "audit_practical_order": {
+                    "allowNull": true,
+                    "field": "audit_practical_order",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "audit_conformity": {
+                    "allowNull": true,
+                    "field": "audit_conformity",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "audit_evidnece_compliance": {
+                    "allowNull": true,
+                    "field": "audit_evidnece_compliance",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "audit_control_action": {
+                    "allowNull": true,
+                    "field": "audit_control_action",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "area_aspect_id": {
+                    "allowNull": true,
+                    "field": "area_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_item_id": {
+                    "allowNull": true,
+                    "field": "document_item_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
         "ceps": {
             "tableName": "ceps",
             "schema": {
@@ -969,5 +1022,5 @@
     "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
     "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 85
+    "revision": 86
 }

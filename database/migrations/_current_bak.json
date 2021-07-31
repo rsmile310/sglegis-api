@@ -350,6 +350,16 @@
                     "field": "document_summary",
                     "seqType": "Sequelize.STRING(2000)"
                 },
+                "document_state_id": {
+                    "allowNull": true,
+                    "field": "document_state_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_city_id": {
+                    "allowNull": true,
+                    "field": "document_city_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "createdAt": {
                     "allowNull": true,
                     "field": "createdAt",
@@ -959,5 +969,5 @@
     "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
     "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 84
+    "revision": 85
 }
