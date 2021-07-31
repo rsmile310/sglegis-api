@@ -388,16 +388,16 @@
                     "seqType": "Sequelize.INTEGER"
                 },
                 "document_item_description": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "Comment": "Descritivo do item",
                     "field": "document_item_description",
-                    "seqType": "Sequelize.STRING(2000)"
+                    "seqType": "Sequelize.TEXT"
                 },
                 "document_item_observation": {
-                    "allowNull": false,
+                    "allowNull": true,
                     "Comment": "Observações do usuário ref. ao item",
                     "field": "document_item_observation",
-                    "seqType": "Sequelize.STRING(2000)"
+                    "seqType": "Sequelize.TEXT"
                 },
                 "document_id": {
                     "allowNull": false,

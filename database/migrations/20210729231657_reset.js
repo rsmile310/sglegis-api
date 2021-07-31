@@ -32,7 +32,7 @@ const Sequelize = require("sequelize");
 const info = {
   revision: 1,
   name: "reset",
-  created: "2021-07-27T21:49:48.814Z",
+  created: "2021-07-29T23:16:57.847Z",
   comment: "",
 };
 
@@ -185,16 +185,16 @@ const migrationCommands = (transaction) => [
           allowNull: false,
         },
         document_item_description: {
-          type: Sequelize.STRING(2000),
+          type: Sequelize.TEXT,
           field: "document_item_description",
           Comment: "Descritivo do item",
-          allowNull: false,
+          allowNull: true,
         },
         document_item_observation: {
-          type: Sequelize.STRING(2000),
+          type: Sequelize.TEXT,
           field: "document_item_observation",
           Comment: "Observações do usuário ref. ao item",
-          allowNull: false,
+          allowNull: true,
         },
         document_id: {
           type: Sequelize.INTEGER,
