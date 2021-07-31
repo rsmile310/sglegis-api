@@ -8,12 +8,11 @@ exports.getAll = (req, res, next) => {
 }
 
 exports.getAreasAspects = (req, res, next) => {
-    let sql = `select ap.*, ar.area_name, iaa.item_area_aspect_id
-                from areas_aspects ap
-                join areas ar on (ap.area_id = ar.area_id)
-                left join items_areas_aspects iaa on (iaa.area_id = ar.area_id and iaa.area_aspect_id = ap.area_aspect_id)
-                where (iaa.document_item_id = ${req.params.id} or iaa.document_item_id is null)
-               order by ar.area_id, ap.area_aspect_name`;
+    let sql = `SELECT ap.*, ar.area_name, iaa.document_item_id, iaa.item_area_aspect_id
+        FROM areas_aspects ap
+        JOIN areas ar ON (ap.area_id = ar.area_id)
+        LEFT JOIN items_areas_aspects iaa ON (iaa.area_aspect_id = ap.area_aspect_id AND iaa.document_item_id = ${req.params.id})
+        ORDER BY ar.area_id, ap.area_aspect_name`;
 
     db.sequelize.query(sql, { type: sequelize.QueryTypes.SELECT }).then(values => {
         let areas = [];
