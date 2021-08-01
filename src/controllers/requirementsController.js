@@ -16,7 +16,7 @@ const getQuery = (req, res, next) => {
                 di.document_item_id, di.document_item_number, di.document_item_status_id, di.document_item_subject, di.document_item_description,
                 iaa.area_id, a.area_name, iaa.area_aspect_id, aa.area_aspect_name, d.document_scope_id,                
                 unity_data.area_aspect_id as aspect, 
-                unity_data.customer_unity_name, unity_data.customer_business_name
+                unity_data.customer_unity_name
             from documents d
             inner join document_items di on d.document_id = di.document_id
             inner join items_areas_aspects iaa on di.document_item_id = iaa.document_item_id 

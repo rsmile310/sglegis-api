@@ -1,8 +1,8 @@
 {  
   "development": {
     "username": "root",
-    "password": "",
-    "database": "prod_sglegis",
+    "password": "100grilo",
+    "database": "sgLegis",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "port": 3306
@@ -14,14 +14,5 @@
     "host": "radatz.shichi.dreamhost.com",
     "dialect": "mysql",
     "port": 3306
-  },
-  "local": {
-    "username": "root",
-    "password": "kill",
-    "database": "sgLegis",
-    "host": "127.0.0.1",
-    "dialect": "mysql",
-    "port": 3306,
-    "protocol": "tcp"
   }
 }
