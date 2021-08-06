@@ -4,6 +4,7 @@ const base = require('./baseController');
 const { isEmpty } = require('../utils/functions');
 const db = require('../models/index');
 const email = require('../config/email');
+const sequelize = require('sequelize');
 
 exports.getAll = (req, res, next) => {
     const q = req.query;    
@@ -76,6 +77,19 @@ exports.notifyResponsibles = async (req, res, next) => {
     } catch (error) {
         next(error);        
     }
+}
+
+exports.getHistoricals = (req, res, next) => {
+    const { document_item_id, area_aspect_id } = req.query;
+    let sql = `SELECT *
+        FROM audits a
+        WHERE document_item_id = ${document_item_id} AND area_aspect_id = ${area_aspect_id}
+        ORDER BY a.updatedAt DESC`
+    db.sequelize.query(sql, { type: sequelize.QueryTypes.SELECT }).then(values => {
+        res.send(values);
+    }).catch(err => {
+        next(err);
+    })
 }
 
 const emailToResponsibles = async (responsibles, auditInfo) =>  {
