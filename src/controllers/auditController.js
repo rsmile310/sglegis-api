@@ -70,10 +70,17 @@ exports.notifyResponsibles = async (req, res, next) => {
                 responsibles.find(r => r.id === value.unity_aspect_responsible_id).aspects.push(value.area_aspect_name);
             }
         })
-        await emailToResponsibles(responsibles, auditInformation);
-        return res.json({
-            success: true
-        })
+        if (responsibles.length > 0) {
+            await emailToResponsibles(responsibles, auditInformation);
+            return res.json({
+                success: true
+            })
+        } else {
+            return res.json({
+                success: false,
+                error: "No found responsible related with this item(Aspect). Please check Aspects."
+            })
+        }
     } catch (error) {
         next(error);        
     }
