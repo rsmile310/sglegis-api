@@ -5,7 +5,7 @@ const sender = {
     pass: 'rjadmstmdsiddl'
 };
 
-exports.send = (receiver, subject, message) => {
+exports.send = (receiver = "", subject = "", message = "") => {
     var transporter = Mail.createTransport({
         service: 'gmail',
         auth: {
