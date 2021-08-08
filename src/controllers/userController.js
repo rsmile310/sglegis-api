@@ -123,6 +123,7 @@ exports.current = async (req, res, next) => {
             role: user.user_role,
             user_profile_type: user.user_profile_type,
             customer_group_id: user.customer_group_id,
+            customer_id: user.customer_id
         });
     } catch (error) {
         next(error);        
