@@ -1,5 +1,110 @@
 {
     "tables": {
+        "actionplan_items": {
+            "tableName": "actionplan_items",
+            "schema": {
+                "actionplan_item_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoincrement": true,
+                    "field": "actionplan_item_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "actionplan_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "actionplans",
+                        "key": "actionplan_id"
+                    },
+                    "comment": "The action plan which this item belong to",
+                    "field": "actionplan_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "activity": {
+                    "allowNull": false,
+                    "comment": "The activity description",
+                    "field": "activity",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "responsible": {
+                    "allowNull": false,
+                    "comment": "The name of responsible`s action plan",
+                    "field": "responsible",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "email": {
+                    "allowNull": true,
+                    "comment": "Email`s resposible",
+                    "field": "email",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "status": {
+                    "default": 0,
+                    "allowNull": false,
+                    "comment": "0:new/open; 2:closed; 3:removed",
+                    "field": "status",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "deadline": {
+                    "allowNull": true,
+                    "comment": "The date responsible must finish the task",
+                    "field": "deadline",
+                    "seqType": "Sequelize.DATE"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "actionplans": {
+            "tableName": "actionplans",
+            "schema": {
+                "actionplan_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoincrement": true,
+                    "field": "actionplan_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "unit_id": {
+                    "allowNull": false,
+                    "comment": "The unit",
+                    "field": "unit_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "item_area_aspect_id": {
+                    "allowNull": false,
+                    "comment": "The item and aspect matched on unit",
+                    "field": "item_area_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "comment": "The user logged who inserted the action plan",
+                    "field": "user_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
         "areas": {
             "tableName": "areas",
             "schema": {
@@ -970,6 +1075,6 @@
     },
     "path": "/Users/cleiton/Work/unity/github/sglegis-api/database/migrations/_current.json",
     "backupPath": "/Users/cleiton/Work/unity/github/sglegis-api/database/migrations/_current_bak.json",
-    "exists": false,
-    "revision": 1
+    "exists": true,
+    "revision": 2
 }
