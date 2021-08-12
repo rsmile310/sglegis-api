@@ -22,5 +22,6 @@ router.use(`/${version}/conformity/`, require('./conformityRoutes'));
 router.use(`/${version}/requirements/`, require('./requirementsRouter'));
 router.use(`/${version}/users/`, require('./userRoutes'));
 router.use(`/${version}/audits/`, require('./auditRoutes'));
+router.use(`/${version}/action-plan/`, require('./actionPlanRoutes'));
 
 module.exports = router;
