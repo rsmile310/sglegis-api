@@ -1,5 +1,100 @@
 {
     "tables": {
+        "actionplans": {
+            "tableName": "actionplans",
+            "schema": {
+                "actionplan_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "actionplan_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "unit_id": {
+                    "allowNull": false,
+                    "comment": "The unit",
+                    "field": "unit_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "item_area_aspect_id": {
+                    "allowNull": false,
+                    "comment": "The item and aspect matched on unit",
+                    "field": "item_area_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "comment": "The user logged who inserted the action plan",
+                    "field": "user_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "actionplan_items": {
+            "tableName": "actionplan_items",
+            "schema": {
+                "actionplan_item_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "actionplan_item_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "activity": {
+                    "allowNull": false,
+                    "comment": "The activity description",
+                    "field": "activity",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "responsible": {
+                    "allowNull": false,
+                    "comment": "The name of responsible`s action plan",
+                    "field": "responsible",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "email": {
+                    "allowNull": true,
+                    "comment": "Email`s resposible",
+                    "field": "email",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "status": {
+                    "default": 0,
+                    "allowNull": false,
+                    "comment": "0:new/open; 2:closed; 3:removed",
+                    "field": "status",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "deadline": {
+                    "allowNull": true,
+                    "comment": "The date responsible must finish the task",
+                    "field": "deadline",
+                    "seqType": "Sequelize.DATE"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
         "areas": {
             "tableName": "areas",
             "schema": {
@@ -59,6 +154,59 @@
                 },
                 "updatedAt": {
                     "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "audits": {
+            "tableName": "audits",
+            "schema": {
+                "audit_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "audit_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "audit_practical_order": {
+                    "allowNull": true,
+                    "field": "audit_practical_order",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "audit_conformity": {
+                    "allowNull": true,
+                    "field": "audit_conformity",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "audit_evidnece_compliance": {
+                    "allowNull": true,
+                    "field": "audit_evidnece_compliance",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "audit_control_action": {
+                    "allowNull": true,
+                    "field": "audit_control_action",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "area_aspect_id": {
+                    "allowNull": true,
+                    "field": "area_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_item_id": {
+                    "allowNull": true,
+                    "field": "document_item_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
                     "field": "updatedAt",
                     "seqType": "Sequelize.DATE"
                 }
@@ -969,5 +1117,5 @@
     "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
     "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
     "exists": true,
-    "revision": 85
+    "revision": 89
 }
