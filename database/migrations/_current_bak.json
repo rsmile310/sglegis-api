@@ -1,5 +1,100 @@
 {
     "tables": {
+        "actionplans": {
+            "tableName": "actionplans",
+            "schema": {
+                "actionplan_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "actionplan_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "unit_id": {
+                    "allowNull": false,
+                    "comment": "The unit",
+                    "field": "unit_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "item_area_aspect_id": {
+                    "allowNull": false,
+                    "comment": "The item and aspect matched on unit",
+                    "field": "item_area_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "comment": "The user logged who inserted the action plan",
+                    "field": "user_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "actionplan_items": {
+            "tableName": "actionplan_items",
+            "schema": {
+                "actionplan_item_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "actionplan_item_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "activity": {
+                    "allowNull": false,
+                    "comment": "The activity description",
+                    "field": "activity",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "responsible": {
+                    "allowNull": false,
+                    "comment": "The name of responsible`s action plan",
+                    "field": "responsible",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "email": {
+                    "allowNull": true,
+                    "comment": "Email`s resposible",
+                    "field": "email",
+                    "seqType": "Sequelize.STRING(50)"
+                },
+                "status": {
+                    "default": 0,
+                    "allowNull": false,
+                    "comment": "0:new/open; 2:closed; 3:removed",
+                    "field": "status",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "deadline": {
+                    "allowNull": true,
+                    "comment": "The date responsible must finish the task",
+                    "field": "deadline",
+                    "seqType": "Sequelize.DATE"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
         "areas": {
             "tableName": "areas",
             "schema": {
@@ -59,6 +154,59 @@
                 },
                 "updatedAt": {
                     "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "audits": {
+            "tableName": "audits",
+            "schema": {
+                "audit_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "audit_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "audit_practical_order": {
+                    "allowNull": true,
+                    "field": "audit_practical_order",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "audit_conformity": {
+                    "allowNull": true,
+                    "field": "audit_conformity",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "audit_evidnece_compliance": {
+                    "allowNull": true,
+                    "field": "audit_evidnece_compliance",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "audit_control_action": {
+                    "allowNull": true,
+                    "field": "audit_control_action",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "area_aspect_id": {
+                    "allowNull": true,
+                    "field": "area_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_item_id": {
+                    "allowNull": true,
+                    "field": "document_item_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
                     "field": "updatedAt",
                     "seqType": "Sequelize.DATE"
                 }
@@ -307,6 +455,72 @@
             },
             "indexes": []
         },
+        "documents": {
+            "tableName": "documents",
+            "schema": {
+                "document_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "document_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_scope_id": {
+                    "allowNull": false,
+                    "field": "document_scope_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_type": {
+                    "allowNull": true,
+                    "field": "document_type",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "document_number": {
+                    "allowNull": true,
+                    "defaultValue": {
+                        "value": "S/N"
+                    },
+                    "field": "document_number",
+                    "seqType": "Sequelize.TEXT"
+                },
+                "document_date": {
+                    "allowNull": true,
+                    "field": "document_date",
+                    "seqType": "Sequelize.DATE"
+                },
+                "document_status_id": {
+                    "allowNull": false,
+                    "field": "document_status_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_summary": {
+                    "allowNull": false,
+                    "field": "document_summary",
+                    "seqType": "Sequelize.STRING(2000)"
+                },
+                "document_state_id": {
+                    "allowNull": true,
+                    "field": "document_state_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "document_city_id": {
+                    "allowNull": true,
+                    "field": "document_city_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
         "document_attachments": {
             "tableName": "document_attachments",
             "schema": {
@@ -388,16 +602,16 @@
                     "seqType": "Sequelize.INTEGER"
                 },
                 "document_item_description": {
-                    "allowNull": true,
+                    "allowNull": false,
                     "Comment": "Descritivo do item",
                     "field": "document_item_description",
-                    "seqType": "Sequelize.TEXT"
+                    "seqType": "Sequelize.STRING(2000)"
                 },
                 "document_item_observation": {
-                    "allowNull": true,
+                    "allowNull": false,
                     "Comment": "Observações do usuário ref. ao item",
                     "field": "document_item_observation",
-                    "seqType": "Sequelize.TEXT"
+                    "seqType": "Sequelize.STRING(2000)"
                 },
                 "document_id": {
                     "allowNull": false,
@@ -460,74 +674,6 @@
                     "allowNull": false,
                     "field": "status_description",
                     "seqType": "Sequelize.TEXT"
-                },
-                "createdAt": {
-                    "allowNull": true,
-                    "field": "createdAt",
-                    "seqType": "Sequelize.DATE"
-                },
-                "updatedAt": {
-                    "allowNull": true,
-                    "field": "updatedAt",
-                    "seqType": "Sequelize.DATE"
-                }
-            },
-            "indexes": []
-        },
-        "documents": {
-            "tableName": "documents",
-            "schema": {
-                "document_id": {
-                    "allowNull": false,
-                    "primaryKey": true,
-                    "autoIncrement": true,
-                    "field": "document_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "document_scope_id": {
-                    "allowNull": false,
-                    "field": "document_scope_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "document_type": {
-                    "allowNull": true,
-                    "field": "document_type",
-                    "seqType": "Sequelize.TEXT"
-                },
-                "document_number": {
-                    "allowNull": true,
-                    "defaultValue": {
-                        "value": "S/N"
-                    },
-                    "field": "document_number",
-                    "seqType": "Sequelize.TEXT"
-                },
-                "document_date": {
-                    "allowNull": true,
-                    "field": "document_date",
-                    "seqType": "Sequelize.DATE"
-                },
-                "document_status_id": {
-                    "allowNull": false,
-                    "field": "document_status_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "document_summary": {
-                    "allowNull": false,
-                    "field": "document_summary",
-                    "seqType": "Sequelize.STRING(2000)"
-                },
-                "document_state_id": {
-                    "allowNull": true,
-                    "Comment": "The region of country document is valid (filled when scope = state)",
-                    "field": "document_state_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "document_city_id": {
-                    "allowNull": true,
-                    "Comment": "The city of region (state) document is valid (filled when scope = city)",
-                    "field": "document_city_id",
-                    "seqType": "Sequelize.INTEGER"
                 },
                 "createdAt": {
                     "allowNull": true,
@@ -968,8 +1114,8 @@
             "indexes": []
         }
     },
-    "path": "/Users/cleiton/Work/unity/github/sglegis-api/database/migrations/_current.json",
-    "backupPath": "/Users/cleiton/Work/unity/github/sglegis-api/database/migrations/_current_bak.json",
-    "exists": false,
-    "revision": 1
+    "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
+    "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
+    "exists": true,
+    "revision": 89
 }
