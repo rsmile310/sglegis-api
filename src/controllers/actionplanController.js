@@ -22,8 +22,6 @@ exports.getAll = (req, res, next) => {
 }
 
 exports.getQuery = (req, res, next)=>{
-    //base.query(actionplans, req, res, next);
-
     let ret = [];
     let sql = `select * 
                 from actionplans a
@@ -39,8 +37,6 @@ exports.getQuery = (req, res, next)=>{
 
 
 exports.post = (req, res, next) => {
-    //base.insert(actionplans, req, res, next);
-
     let actionplans = req.body;
 
     //if there is no id, so (insert)
