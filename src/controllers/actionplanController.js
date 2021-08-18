@@ -6,7 +6,6 @@ const { isEmpty } = require('../utils/functions');
 const emailService = require("../config/email");
 
 exports.getAll = (req, res, next) => {
-    //base.getAll(actionplans, req, res, next);    
     let ret = [];
     let sql = `select * 
                 from actionplans a
