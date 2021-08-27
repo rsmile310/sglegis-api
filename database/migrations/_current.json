@@ -1,46 +1,5 @@
 {
     "tables": {
-        "actionplans": {
-            "tableName": "actionplans",
-            "schema": {
-                "actionplan_id": {
-                    "allowNull": false,
-                    "primaryKey": true,
-                    "autoIncrement": true,
-                    "field": "actionplan_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "unit_id": {
-                    "allowNull": false,
-                    "comment": "The unit",
-                    "field": "unit_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "item_area_aspect_id": {
-                    "allowNull": false,
-                    "comment": "The item and aspect matched on unit",
-                    "field": "item_area_aspect_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "user_id": {
-                    "allowNull": false,
-                    "comment": "The user logged who inserted the action plan",
-                    "field": "user_id",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "createdAt": {
-                    "allowNull": true,
-                    "field": "createdAt",
-                    "seqType": "Sequelize.DATE"
-                },
-                "updatedAt": {
-                    "allowNull": true,
-                    "field": "updatedAt",
-                    "seqType": "Sequelize.DATE"
-                }
-            },
-            "indexes": []
-        },
         "actionplan_items": {
             "tableName": "actionplan_items",
             "schema": {
@@ -87,6 +46,47 @@
                     "comment": "The date responsible must finish the task",
                     "field": "deadline",
                     "seqType": "Sequelize.DATE"
+                },
+                "createdAt": {
+                    "allowNull": true,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": true,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "actionplans": {
+            "tableName": "actionplans",
+            "schema": {
+                "actionplan_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "actionplan_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "unit_id": {
+                    "allowNull": false,
+                    "comment": "The unit",
+                    "field": "unit_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "item_area_aspect_id": {
+                    "allowNull": false,
+                    "comment": "The item and aspect matched on unit",
+                    "field": "item_area_aspect_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "user_id": {
+                    "allowNull": false,
+                    "comment": "The user logged who inserted the action plan",
+                    "field": "user_id",
+                    "seqType": "Sequelize.INTEGER"
                 },
                 "createdAt": {
                     "allowNull": true,
@@ -407,7 +407,7 @@
                     "seqType": "Sequelize.STRING(20)"
                 },
                 "customer_unity_name": {
-                    "allowNull": true,
+                    "allowNull": false,
                     "field": "customer_unity_name",
                     "seqType": "Sequelize.STRING(100)"
                 },
@@ -440,7 +440,7 @@
                     "seqType": "Sequelize.STRING(9)"
                 },
                 "customer_id": {
-                    "allowNull": true,
+                    "allowNull": false,
                     "references": {
                         "model": "customers",
                         "key": "customer_id"
@@ -657,7 +657,7 @@
                     "seqType": "Sequelize.TEXT"
                 },
                 "document_date": {
-                    "allowNull": true,
+                    "allowNull": false,
                     "field": "document_date",
                     "seqType": "Sequelize.DATE"
                 },
@@ -1122,8 +1122,8 @@
             "indexes": []
         }
     },
-    "path": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current.json",
-    "backupPath": "E:\\current_project\\workana-new\\Angular\\sglegis-api\\database\\migrations\\_current_bak.json",
-    "exists": true,
-    "revision": 90
+    "path": "/Users/cleiton/Work/unity/github/sglegis-api/database/migrations/_current.json",
+    "backupPath": "/Users/cleiton/Work/unity/github/sglegis-api/database/migrations/_current_bak.json",
+    "exists": false,
+    "revision": 1
 }
